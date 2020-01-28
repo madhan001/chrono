@@ -13,8 +13,8 @@
 //Files needed to run the POV-Ray scene:
 //CityBus_Vis_POV_main.ini (initialization file - open this to render)
 //CityBus_Vis_POV_scene.pov (scene setup of cameras, lights and geometry)
-//chassis_geom.inc (geometry)
-//chassis_mat.inc (materials)
+//CityBus_Vis.inc (geometry)
+//CityBus_Vis_mat.inc (materials)
 // 
 //==================================================
 //Model Statistics:
@@ -42,7 +42,7 @@
  
  
 //Materials
-#include "chassis_mat.inc"
+#include "CityBus_Vis_mat.inc"
  
 //Geometry
 #declare CityBus_Vis_Chrome_=mesh2{
@@ -65131,7 +65131,7 @@ inside_vector <0,0,1> }
  
  
 //Model assembly from the meshes
-#declare chassis_geom=
+#declare CityBus_Vis=
 object {
 union {
 object{CityBus_Vis_Chrome_  material{Chrome_} hollow }
@@ -65148,6 +65148,6 @@ object{CityBus_Vis_Windows_  material{Windows_} hollow }
 rotate <-90, 0, 0>
 scale <1,1,-1>
 }
-
+ 
 //restore the version used outside this file
 #version Temp_version;

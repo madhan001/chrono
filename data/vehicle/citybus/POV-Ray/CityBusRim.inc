@@ -11,10 +11,10 @@
 //Web: https://sites.google.com/site/poseray/
 //==================================================
 //Files needed to run the POV-Ray scene:
-//CityBusRim_Right_POV_main.ini (initialization file - open this to render)
-//CityBusRim_Right_POV_scene.pov (scene setup of cameras, lights and geometry)
-//rim_right_geom.inc (geometry)
-//rim_right_mat.inc (materials)
+//CityBusRim_POV_main.ini (initialization file - open this to render)
+//CityBusRim_POV_scene.pov (scene setup of cameras, lights and geometry)
+//CityBusRim.inc (geometry)
+//CityBusRim_mat.inc (materials)
 // 
 //==================================================
 //Model Statistics:
@@ -40,10 +40,10 @@
  
  
 //Materials
-#include "rim_right_mat.inc"
+#include "CityBusRim_mat.inc"
  
 //Geometry
-#declare CityBusRim_Right_White_=mesh2{
+#declare CityBusRim_White_=mesh2{
 vertex_vectors{
 1858,
 <0,-0.130103,0.319948>,
@@ -10375,7 +10375,7 @@ normal_indices{
 }
 inside_vector <0,0,1> }
  
-#declare CityBusRim_Right_Material_001_=mesh2{
+#declare CityBusRim_Material_001_=mesh2{
 vertex_vectors{
 2188,
 <-0.038791,0.159559,0.144555>,
@@ -24420,7 +24420,7 @@ normal_indices{
 }
 inside_vector <0,0,1> }
  
-#declare CityBusRim_Right_Black_=mesh2{
+#declare CityBusRim_Black_=mesh2{
 vertex_vectors{
 384,
 <0.023757,0.135373,0.118668>,
@@ -26635,12 +26635,12 @@ inside_vector <0,0,1> }
  
  
 //Model assembly from the meshes
-#declare rim_right_geom=
+#declare CityBusRim=
 object {
 union {
-object{CityBusRim_Right_White_  material{White_} hollow }
-object{CityBusRim_Right_Material_001_  material{Material_001_} hollow }
-object{CityBusRim_Right_Black_  material{Black_} hollow }
+object{CityBusRim_White_  material{White_} hollow }
+object{CityBusRim_Material_001_  material{Material_001_} hollow }
+object{CityBusRim_Black_  material{Black_} hollow }
 }
 rotate <-90, 0, 0>
 scale <1,1,-1>

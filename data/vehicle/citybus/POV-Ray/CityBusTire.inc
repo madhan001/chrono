@@ -13,8 +13,8 @@
 //Files needed to run the POV-Ray scene:
 //CityBusTire_POV_main.ini (initialization file - open this to render)
 //CityBusTire_POV_scene.pov (scene setup of cameras, lights and geometry)
-//tire_geom.inc (geometry)
-//tire_mat.inc (materials)
+//CityBusTire.inc (geometry)
+//CityBusTire_mat.inc (materials)
 // 
 //==================================================
 //Model Statistics:
@@ -40,7 +40,7 @@
  
  
 //Materials
-#include "tire_mat.inc"
+#include "CityBusTire_mat.inc"
  
 //Geometry
 #declare CityBusTire_Rubber_=mesh2{
@@ -7695,7 +7695,7 @@ inside_vector <0,0,1> }
  
  
 //Model assembly from the meshes
-#declare tire_geom=
+#declare CityBusTire=
 object {
 object{CityBusTire_Rubber_  material{Rubber_} hollow }
 rotate <-90, 0, 0>

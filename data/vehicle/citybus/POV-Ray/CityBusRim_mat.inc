@@ -11,10 +11,10 @@
 //Web: https://sites.google.com/site/poseray/
 //==================================================
 //Files needed to run the POV-Ray scene:
-//CityBusRim_Right_POV_main.ini (initialization file - open this to render)
-//CityBusRim_Right_POV_scene.pov (scene setup of cameras, lights and geometry)
-//rim_right_geom.inc (geometry)
-//rim_right_mat.inc (materials)
+//CityBusRim_POV_main.ini (initialization file - open this to render)
+//CityBusRim_POV_scene.pov (scene setup of cameras, lights and geometry)
+//CityBusRim.inc (geometry)
+//CityBusRim_mat.inc (materials)
 // 
  
 //Macros used by PoseRay to manipulate pigments
@@ -289,7 +289,7 @@ average pigment_map{
                    roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
                    phong  0 phong_size 0 //Phong specular disabled
                    
-                   ambient <0,0,0> emission srgb <1.00,1.00,1.00> //ambient RGB color: 0->1 for each component
+                   ambient <0,0,0> emission srgb <0.00,0.00,0.00> //ambient RGB color: 0->1 for each component
                    diffuse  0.6 
                    reflection{0 } conserve_energy //reflection amount: 0 -> 1
                    }
@@ -314,7 +314,7 @@ material{
                    roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
                    phong  0 phong_size 0 //Phong specular disabled
                    
-                   ambient <0,0,0> emission srgb <1.00,1.00,1.00> //ambient RGB color: 0->1 for each component
+                   ambient <0,0,0> emission srgb <0.00,0.00,0.00> //ambient RGB color: 0->1 for each component
                    diffuse  0.6 
                    reflection{0 } conserve_energy //reflection amount: 0 -> 1
                    }
@@ -339,7 +339,7 @@ material{
                    roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
                    phong  0 phong_size 0 //Phong specular disabled
                    
-                   ambient <0,0,0> emission srgb <1.00,1.00,1.00> //ambient RGB color: 0->1 for each component
+                   ambient <0,0,0> emission srgb <0.00,0.00,0.00> //ambient RGB color: 0->1 for each component
                    diffuse  0.6 
                    reflection{0 } conserve_energy //reflection amount: 0 -> 1
                    }

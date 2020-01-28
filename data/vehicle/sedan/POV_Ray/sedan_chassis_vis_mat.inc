@@ -11,10 +11,10 @@
 //Web: https://sites.google.com/site/poseray/
 //==================================================
 //Files needed to run the POV-Ray scene:
-//CityBusRim_Left_POV_main.ini (initialization file - open this to render)
-//CityBusRim_Left_POV_scene.pov (scene setup of cameras, lights and geometry)
-//rim_left_geom.inc (geometry)
-//rim_left_mat.inc (materials)
+//sedan_chassis_vis_POV_main.ini (initialization file - open this to render)
+//sedan_chassis_vis_POV_scene.pov (scene setup of cameras, lights and geometry)
+//sedan_chassis_vis.inc (geometry)
+//sedan_chassis_vis_mat.inc (materials)
 // 
  
 //Macros used by PoseRay to manipulate pigments
@@ -281,40 +281,15 @@ average pigment_map{
  
 //==================================================
 //Material definitions
-#declare Black_=
-#declare PR_DIFFUSE=pigment {color srgb <0.20,0.20,0.20> transmit 0/100 }
-
-
-#declare F1=finish{specular  0.501960784313725 //Max highlight intensity: 0 -> 1
-                   roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
-                   phong  0 phong_size 0 //Phong specular disabled
-                   
-                   ambient <0,0,0> emission srgb <1.00,1.00,1.00> //ambient RGB color: 0->1 for each component
-                   diffuse  0.6 
-                   reflection{0 } conserve_energy //reflection amount: 0 -> 1
-                   }
-
-
-#declare T1=texture{
-                   pigment{uv_mapping PR_DIFFUSE }
-                            finish{F1}
-                    }
-
-
-material{
-         texture{/*uv_mapping*/
-                 T1
-                }
-}
 #declare Material_001_=
-#declare PR_DIFFUSE=pigment {color srgb <0.20,0.20,0.20> transmit 0/100 }
+#declare PR_DIFFUSE=pigment {color srgb <0.40,0.02,0.00> transmit 0/100 }
 
 
-#declare F1=finish{specular  0.501960784313725 //Max highlight intensity: 0 -> 1
+#declare F1=finish{specular  0.925490196078431 //Max highlight intensity: 0 -> 1
                    roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
                    phong  0 phong_size 0 //Phong specular disabled
                    
-                   ambient <0,0,0> emission srgb <1.00,1.00,1.00> //ambient RGB color: 0->1 for each component
+                   ambient <0,0,0> emission srgb <0.29,0.29,0.29> //ambient RGB color: 0->1 for each component
                    diffuse  0.6 
                    reflection{0 } conserve_energy //reflection amount: 0 -> 1
                    }
@@ -331,15 +306,265 @@ material{
                  T1
                 }
 }
-#declare White_=
+#declare Material_004_=
+#declare PR_DIFFUSE=pigment {color srgb <0.09,0.09,0.09> transmit 80/100 }
+
+
+#declare F1=finish{specular  0.396078431372549 //Max highlight intensity: 0 -> 1
+                   roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
+                   phong  0 phong_size 0 //Phong specular disabled
+                   
+                   ambient <0,0,0> emission srgb <0.15,0.15,0.15> //ambient RGB color: 0->1 for each component
+                   diffuse  0.6 
+                   reflection{0 } conserve_energy //reflection amount: 0 -> 1
+                   }
+
+
+#declare T1=texture{
+                   pigment{uv_mapping PR_DIFFUSE }
+                            finish{F1}
+                    }
+
+
+material{
+         texture{/*uv_mapping*/
+                 T1
+                }
+}
+#declare Material_005_=
+#declare PR_DIFFUSE=pigment {color srgb <0.04,0.04,0.04> transmit 0/100 }
+
+
+#declare F1=finish{specular  0.505882352941176 //Max highlight intensity: 0 -> 1
+                   roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
+                   phong  0 phong_size 0 //Phong specular disabled
+                   
+                   ambient <0,0,0> emission srgb <0.38,0.38,0.38> //ambient RGB color: 0->1 for each component
+                   diffuse  0.6 
+                   reflection{0 } conserve_energy //reflection amount: 0 -> 1
+                   }
+
+
+#declare T1=texture{
+                   pigment{uv_mapping PR_DIFFUSE }
+                            finish{F1}
+                    }
+
+
+material{
+         texture{/*uv_mapping*/
+                 T1
+                }
+}
+#declare Material_006_=
 #declare PR_DIFFUSE=pigment {color srgb <0.80,0.80,0.80> transmit 0/100 }
 
 
-#declare F1=finish{specular  0.8 //Max highlight intensity: 0 -> 1
+#declare F1=finish{specular  1 //Max highlight intensity: 0 -> 1
                    roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
                    phong  0 phong_size 0 //Phong specular disabled
                    
                    ambient <0,0,0> emission srgb <1.00,1.00,1.00> //ambient RGB color: 0->1 for each component
+                   diffuse  0.6 
+                   reflection{0 } conserve_energy //reflection amount: 0 -> 1
+                   }
+
+
+#declare T1=texture{
+                   pigment{uv_mapping PR_DIFFUSE }
+                            finish{F1}
+                    }
+
+
+material{
+         texture{/*uv_mapping*/
+                 T1
+                }
+}
+#declare Material_007_=
+#declare PR_DIFFUSE=pigment {color srgb <0.64,0.61,0.47> transmit 65/100 }
+
+
+#declare F1=finish{specular  0.501960784313725 //Max highlight intensity: 0 -> 1
+                   roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
+                   phong  0 phong_size 0 //Phong specular disabled
+                   
+                   ambient <0,0,0> emission srgb <1.00,1.00,1.00> //ambient RGB color: 0->1 for each component
+                   diffuse  0.6 
+                   reflection{0 } conserve_energy //reflection amount: 0 -> 1
+                   }
+
+
+#declare T1=texture{
+                   pigment{uv_mapping PR_DIFFUSE }
+                            finish{F1}
+                    }
+
+
+material{
+         texture{/*uv_mapping*/
+                 T1
+                }
+}
+#declare Material_008_=
+#declare PR_DIFFUSE=pigment {color srgb <0.33,0.00,0.00> transmit 65/100 }
+
+
+#declare F1=finish{specular  0.505882352941176 //Max highlight intensity: 0 -> 1
+                   roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
+                   phong  0 phong_size 0 //Phong specular disabled
+                   
+                   ambient <0,0,0> emission srgb <1.00,1.00,1.00> //ambient RGB color: 0->1 for each component
+                   diffuse  0.6 
+                   reflection{0 } conserve_energy //reflection amount: 0 -> 1
+                   }
+
+
+#declare T1=texture{
+                   pigment{uv_mapping PR_DIFFUSE }
+                            finish{F1}
+                    }
+
+
+material{
+         texture{/*uv_mapping*/
+                 T1
+                }
+}
+#declare Material_002_=
+#declare PR_DIFFUSE=pigment {color srgb <0.02,0.02,0.02> transmit 0/100 }
+
+
+#declare F1=finish{specular  0 //Max highlight intensity: 0 -> 1
+                   roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
+                   phong  0 phong_size 0 //Phong specular disabled
+                   
+                   ambient <0,0,0> emission srgb <0.31,0.31,0.31> //ambient RGB color: 0->1 for each component
+                   diffuse  0.6 
+                   reflection{0 } conserve_energy //reflection amount: 0 -> 1
+                   }
+
+
+#declare T1=texture{
+                   pigment{uv_mapping PR_DIFFUSE }
+                            finish{F1}
+                    }
+
+
+material{
+         texture{/*uv_mapping*/
+                 T1
+                }
+}
+#declare Material_011_=
+#declare PR_DIFFUSE=pigment {color srgb <0.25,0.25,0.25> transmit 0/100 }
+
+
+#declare F1=finish{specular  0 //Max highlight intensity: 0 -> 1
+                   roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
+                   phong  0 phong_size 0 //Phong specular disabled
+                   
+                   ambient <0,0,0> emission srgb <0.48,0.48,0.48> //ambient RGB color: 0->1 for each component
+                   diffuse  0.6 
+                   reflection{0 } conserve_energy //reflection amount: 0 -> 1
+                   }
+
+
+#declare T1=texture{
+                   pigment{uv_mapping PR_DIFFUSE }
+                            finish{F1}
+                    }
+
+
+material{
+         texture{/*uv_mapping*/
+                 T1
+                }
+}
+#declare Material_010_=
+#declare PR_DIFFUSE=pigment {color srgb <0.25,0.25,0.25> transmit 0/100 }
+
+
+#declare F1=finish{specular  0 //Max highlight intensity: 0 -> 1
+                   roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
+                   phong  0 phong_size 0 //Phong specular disabled
+                   
+                   ambient <0,0,0> emission srgb <0.48,0.48,0.48> //ambient RGB color: 0->1 for each component
+                   diffuse  0.6 
+                   reflection{0 } conserve_energy //reflection amount: 0 -> 1
+                   }
+
+
+#declare T1=texture{
+                   pigment{uv_mapping PR_DIFFUSE }
+                            finish{F1}
+                    }
+
+
+material{
+         texture{/*uv_mapping*/
+                 T1
+                }
+}
+#declare Material_009_=
+#declare PR_DIFFUSE=pigment {color srgb <0.25,0.25,0.25> transmit 0/100 }
+
+
+#declare F1=finish{specular  0 //Max highlight intensity: 0 -> 1
+                   roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
+                   phong  0 phong_size 0 //Phong specular disabled
+                   
+                   ambient <0,0,0> emission srgb <0.48,0.48,0.48> //ambient RGB color: 0->1 for each component
+                   diffuse  0.6 
+                   reflection{0 } conserve_energy //reflection amount: 0 -> 1
+                   }
+
+
+#declare T1=texture{
+                   pigment{uv_mapping PR_DIFFUSE }
+                            finish{F1}
+                    }
+
+
+material{
+         texture{/*uv_mapping*/
+                 T1
+                }
+}
+#declare Material_003_=
+#declare PR_DIFFUSE=pigment {color srgb <0.25,0.25,0.25> transmit 0/100 }
+
+
+#declare F1=finish{specular  0 //Max highlight intensity: 0 -> 1
+                   roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
+                   phong  0 phong_size 0 //Phong specular disabled
+                   
+                   ambient <0,0,0> emission srgb <0.48,0.48,0.48> //ambient RGB color: 0->1 for each component
+                   diffuse  0.6 
+                   reflection{0 } conserve_energy //reflection amount: 0 -> 1
+                   }
+
+
+#declare T1=texture{
+                   pigment{uv_mapping PR_DIFFUSE }
+                            finish{F1}
+                    }
+
+
+material{
+         texture{/*uv_mapping*/
+                 T1
+                }
+}
+#declare Material_012_=
+#declare PR_DIFFUSE=pigment {color srgb <0.25,0.25,0.25> transmit 0/100 }
+
+
+#declare F1=finish{specular  0 //Max highlight intensity: 0 -> 1
+                   roughness 0.00286311979893597 //surface roughness: 0.0005 -> 1
+                   phong  0 phong_size 0 //Phong specular disabled
+                   
+                   ambient <0,0,0> emission srgb <0.48,0.48,0.48> //ambient RGB color: 0->1 for each component
                    diffuse  0.6 
                    reflection{0 } conserve_energy //reflection amount: 0 -> 1
                    }
