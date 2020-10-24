@@ -14,26 +14,30 @@
 // Header for an helper class defining common methods for shape node classes
 // =============================================================================
 
-#ifndef VSG_SPHERE_H
-#define VSG_SPHERE_H
+#ifndef VSG_INDEX_SPHERE_H
+#define VSG_INDEX_SPHERE_H
 
 #include <iostream>
 #include "chrono/core/ChVector.h"
 #include "chrono/physics/ChSystemNSC.h"
 #include "chrono_vsg/core/ChApiVSG.h"
-#include "chrono_vsg/shapes/ChVSGIdxMesh.h"
+#include "chrono_vsg/shapes/ChVSGIndexMesh.h"
 
 #include <vsg/all.h>
 
 namespace chrono {
 namespace vsg3d {
 
-class CH_VSG_API VSGSphere : public ChVSGIdxMesh {
+class CH_VSG_API VSGIndexSphere : public ChVSGIndexMesh {
   public:
-    VSGSphere(std::shared_ptr<ChBody> body,
-              std::shared_ptr<ChAsset> asset,
-              vsg::ref_ptr<vsg::MatrixTransform> transform);
-    virtual void Initialize(vsg::vec3& lightPosition, ChVSGPhongMaterial& mat, std::string& texFilePath) override;
+    VSGIndexSphere(std::shared_ptr<ChBody> body,
+                   std::shared_ptr<ChAsset> asset,
+                   vsg::ref_ptr<vsg::MatrixTransform> transform);
+    virtual void Initialize(ChTexture& texture, size_t tessFactor = 3) override;
+    virtual void Initialize(ChColor& color, size_t tessFactor = 3) override;
+
+  protected:
+    virtual void Tesselate(size_t tessFactor) override;
 };
 }  // namespace vsg3d
 }  // namespace chrono

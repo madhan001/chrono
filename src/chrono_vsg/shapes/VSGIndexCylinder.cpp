@@ -1,19 +1,33 @@
-#include "chrono_vsg/shapes/VSGSimpleCylinder.h"
+#include "chrono_vsg/shapes/VSGIndexCylinder.h"
 #include "chrono_thirdparty/stb/stb_image.h"
 #include "chrono_thirdparty/filesystem/path.h"
 
 using namespace chrono::vsg3d;
 
-VSGSimpleCylinder::VSGSimpleCylinder(std::shared_ptr<ChBody> body,
-                                     std::shared_ptr<ChAsset> asset,
-                                     vsg::ref_ptr<vsg::MatrixTransform> transform)
-    : ChVSGSimplePhongIdxMesh(body, asset, transform) {}
+VSGIndexCylinder::VSGIndexCylinder(std::shared_ptr<ChBody> body,
+                                   std::shared_ptr<ChAsset> asset,
+                                   vsg::ref_ptr<vsg::MatrixTransform> transform)
+    : ChVSGIndexMesh(body, asset, transform) {}
 
-void VSGSimpleCylinder::Initialize(vsg::vec3& lightPosition, vsg::vec3& objectColor) {
-    m_lightPosition = lightPosition;
-    m_objectColor = objectColor;
+void VSGIndexCylinder::Initialize(ChTexture& texture, size_t tessFactor) {
+    Tesselate(tessFactor);
 
-    // set up vertices, normals, texcoords, indices
+    m_matMode = MaterialMode::Textured;
+    m_textureFilePath = texture.GetTextureFilename();
+}
+
+void VSGIndexCylinder::Initialize(ChColor& color, size_t tessFactor) {
+    Tesselate(tessFactor);
+
+    m_matMode = MaterialMode::SimplePhong;
+    m_objectColor[0] = color.R;
+    m_objectColor[1] = color.G;
+    m_objectColor[2] = color.B;
+    
+    m_colors = vsg::vec3Array::create(m_vertices->size(), m_objectColor);
+}
+
+void VSGIndexCylinder::Tesselate(size_t tessFactor) {  // set up vertices, normals, texcoords, indices
     m_vertices = vsg::vec3Array::create({
         {1, 0, 0.5},
         {0.951057, 0.309017, 0.5},
@@ -192,6 +206,24 @@ void VSGSimpleCylinder::Initialize(vsg::vec3& lightPosition, vsg::vec3& objectCo
         {0, 0, -1},
     });
 
+    m_texcoords = vsg::vec2Array::create({
+        {0, 0.666667},    {0.05, 0.666667}, {0.1, 0.666667},  {0.15, 0.666667}, {0.2, 0.666667},  {0.25, 0.666667},
+        {0.3, 0.666667},  {0.35, 0.666667}, {0.4, 0.666667},  {0.45, 0.666667}, {0.5, 0.666667},  {0.55, 0.666667},
+        {0.6, 0.666667},  {0.65, 0.666667}, {0.7, 0.666667},  {0.75, 0.666667}, {0.8, 0.666667},  {0.85, 0.666667},
+        {0.9, 0.666667},  {0.95, 0.666667}, {1, 0.666667},    {0, 0.333333},    {0.05, 0.333333}, {0.1, 0.333333},
+        {0.15, 0.333333}, {0.2, 0.333333},  {0.25, 0.333333}, {0.3, 0.333333},  {0.35, 0.333333}, {0.4, 0.333333},
+        {0.45, 0.333333}, {0.5, 0.333333},  {0.55, 0.333333}, {0.6, 0.333333},  {0.65, 0.333333}, {0.7, 0.333333},
+        {0.75, 0.333333}, {0.8, 0.333333},  {0.85, 0.333333}, {0.9, 0.333333},  {0.95, 0.333333}, {1, 0.333333},
+        {0, 0.666667},    {0.05, 0.666667}, {0.1, 0.666667},  {0.15, 0.666667}, {0.2, 0.666667},  {0.25, 0.666667},
+        {0.3, 0.666667},  {0.35, 0.666667}, {0.4, 0.666667},  {0.45, 0.666667}, {0.5, 0.666667},  {0.55, 0.666667},
+        {0.6, 0.666667},  {0.65, 0.666667}, {0.7, 0.666667},  {0.75, 0.666667}, {0.8, 0.666667},  {0.85, 0.666667},
+        {0.9, 0.666667},  {0.95, 0.666667}, {1, 0.666667},    {0, 0.666667},    {0.05, 0.666667}, {0.1, 0.666667},
+        {0.15, 0.666667}, {0.2, 0.666667},  {0.25, 0.666667}, {0.3, 0.666667},  {0.35, 0.666667}, {0.4, 0.666667},
+        {0.45, 0.666667}, {0.5, 0.666667},  {0.55, 0.666667}, {0.6, 0.666667},  {0.65, 0.666667}, {0.7, 0.666667},
+        {0.75, 0.666667}, {0.8, 0.666667},  {0.85, 0.666667}, {0.9, 0.666667},  {0.95, 0.666667}, {1, 0.666667},
+        {0.5, 1},         {0.5, 0},
+    });
+
     m_indices = vsg::ushortArray::create({
         0,  21, 22, 0,  22, 1,  1,  22, 23, 1,  23, 2,  2,  23, 24, 2,  24, 3,  3,  24, 25, 3,  25, 4,  4,  25, 26,
         4,  26, 5,  5,  26, 27, 5,  27, 6,  6,  27, 28, 6,  28, 7,  7,  28, 29, 7,  29, 8,  8,  29, 30, 8,  30, 9,
@@ -203,6 +235,4 @@ void VSGSimpleCylinder::Initialize(vsg::vec3& lightPosition, vsg::vec3& objectCo
         85, 67, 66, 85, 68, 67, 85, 69, 68, 85, 70, 69, 85, 71, 70, 85, 72, 71, 85, 73, 72, 85, 74, 73, 85, 75, 74,
         85, 76, 75, 85, 77, 76, 85, 78, 77, 85, 79, 78, 85, 80, 79, 85, 81, 80, 85, 82, 81, 85, 83, 82,
     });
-
-    m_colors = vsg::vec3Array::create(m_vertices->size(), objectColor);
 }
