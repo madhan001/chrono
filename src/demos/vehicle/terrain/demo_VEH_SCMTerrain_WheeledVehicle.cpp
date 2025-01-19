@@ -187,10 +187,13 @@ int main(int argc, char* argv[]) {
     // Set initial vehicle location
     ChVector3d init_loc;
     ChVector2d patch_size;
+    ChAABB patch_aabb;
     switch (patch_type) {
         case PatchType::FLAT:
-            init_loc = ChVector3d(-5.0, -2.0, 0.6);
-            patch_size = ChVector2d(16.0, 8.0);
+            init_loc = ChVector3d(-15.0, -6.0, 0.6);
+            patch_size = ChVector2d(40.0, 16.0);
+            patch_aabb = ChAABB(ChVector3d(-patch_size.x() / 2, -patch_size.y() / 2, 0),
+                                ChVector3d(+patch_size.x() / 2, +patch_size.y() / 2, 0));
             break;
         case PatchType::MESH:
             init_loc = ChVector3d(-12.0, -12.0, 1.6);
@@ -198,6 +201,8 @@ int main(int argc, char* argv[]) {
         case PatchType::HEIGHMAP:
             init_loc = ChVector3d(-15.0, -15.0, 0.6);
             patch_size = ChVector2d(40.0, 40.0);
+            patch_aabb = ChAABB(ChVector3d(-patch_size.x() / 2, -patch_size.y() / 2, 0),
+                                ChVector3d(+patch_size.x() / 2, +patch_size.y() / 2, 0));
             break;
     }
 
@@ -266,6 +271,9 @@ int main(int argc, char* argv[]) {
                               2e8,   // Elastic stiffness (Pa/m), before plastic yield
                               3e4    // Damping (Pa s/m), proportional to negative vertical speed (optional)
     );
+
+    //// Optionally, restrict the SCM computational domain.
+    ////terrain.SetBoundary(patch_aabb);
 
     // Optionally, enable bulldozing effects.
     ////terrain.EnableBulldozing(true);      // inflate soil at the border of the rut
