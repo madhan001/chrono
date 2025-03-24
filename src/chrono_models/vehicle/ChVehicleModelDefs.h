@@ -90,6 +90,9 @@ namespace duro {}
 /// namespace for the Unimog 401 vehicle model
 namespace unimog {}
 
+/// namespace for the Vertiwheeler vehicle model
+namespace vertiwheeler {}
+
 /// @} vehicle_models
 
 }  // end namespace vehicle

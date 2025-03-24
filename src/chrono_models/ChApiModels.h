@@ -52,6 +52,8 @@
          @defgroup vehicle_models_bmw BMW E90 vehicle
          @defgroup vehicle_models_cherokee Jeep Cherokee vehicle
          @defgroup vehicle_models_unimog Unimog 401 vehicle
+         @defgroup vehicle_models_vertiwheeler Vertiwheeler vehicle
+
        @}
        @defgroup robot_models Robot models
        @brief Collection of robotic system models

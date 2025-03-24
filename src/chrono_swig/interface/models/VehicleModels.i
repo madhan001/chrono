@@ -4,7 +4,7 @@
 
 #include "chrono/core/ChCoordsys.h"
 #include "chrono/physics/ChSystem.h"
-#include "chrono/physics/ChContactMaterial.h"
+#include "chrono/physics/ChMaterialSurface.h"
 
 #include "chrono_vehicle/wheeled_vehicle/ChWheeledVehicle.h"
 #include "chrono_vehicle/tracked_vehicle/ChTrackedVehicle.h"
@@ -42,15 +42,11 @@
 #include "chrono_models/vehicle/feda/FEDA.h"
 #include "chrono_models/vehicle/feda/FEDA_Vehicle.h"
 
-#include "chrono_models/vehicle/bmw/BMW_E90.h"
-#include "chrono_models/vehicle/bmw/BMW_E90_Vehicle.h"
-
 #include "chrono_models/vehicle/m113/M113.h"
 #include "chrono_models/vehicle/m113/M113_Vehicle.h"
 
-#include "chrono_models/vehicle/kraz/Kraz.h"
-#include "chrono_models/vehicle/kraz/Kraz_tractor.h"
-#include "chrono_models/vehicle/kraz/Kraz_trailer.h"
+#include "chrono_models/vehicle/vertiwheeler/Vertiwheeler.h"
+#include "chrono_models/vehicle/vertiwheeler/Vertiwheeler_Vehicle.h"
 %}
 
 
@@ -86,9 +82,6 @@
 %shared_ptr(chrono::vehicle::feda::FEDA)
 %shared_ptr(chrono::vehicle::feda::FEDA_Vehicle)
 
-%shared_ptr(chrono::vehicle::bmw::BMW_E90)
-%shared_ptr(chrono::vehicle::bmw::BMW_E90_Vehicle)
-
 %shared_ptr(chrono::vehicle::m113::M113)
 %shared_ptr(chrono::vehicle::m113::M113_Vehicle)
 %shared_ptr(chrono::vehicle::m113::M113_Vehicle_SinglePin)
@@ -96,17 +89,16 @@
 %shared_ptr(chrono::vehicle::m113::M113_Vehicle_BandBushing)
 %shared_ptr(chrono::vehicle::m113::M113_Vehicle_BandANCF)
 
-%shared_ptr(chrono::vehicle::kraz::kraz)
-%shared_ptr(chrono::vehicle::kraz::Kraz_tractor)
-%shared_ptr(chrono::vehicle::kraz::Kraz_trailer)
+%shared_ptr(chrono::vehicle::vertiwheeler::Vertiwheeler)
+%shared_ptr(chrono::vehicle::vertiwheeler::Vertiwheeler_Vehicle)
 
 
 #ifdef SWIGCSHARP
-%import "chrono_swig/interface/core/ChContactMaterial.i"
+%import "chrono_swig/interface/core/ChMaterialSurface.i"
 #endif
 
 #ifdef SWIGPYCHRONO
-%import(module = "pychrono.core") "chrono_swig/interface/core/ChContactMaterial.i"
+%import(module = "pychrono.core") "chrono_swig/interface/core/ChMaterialSurface.i"
 #endif
 
 %import "chrono_swig/interface/vehicle/ChSuspension.i"
@@ -155,12 +147,8 @@
 %include "../../../chrono_models/vehicle/feda/FEDA.h"
 %include "../../../chrono_models/vehicle/feda/FEDA_Vehicle.h"
 
-%include "../../../chrono_models/vehicle/bmw/BMW_E90.h"
-%include "../../../chrono_models/vehicle/bmw/BMW_E90_Vehicle.h"
-
 %include "../../../chrono_models/vehicle/m113/M113.h"
 %include "../../../chrono_models/vehicle/m113/M113_Vehicle.h"
 
-%include "../../../chrono_models/vehicle/kraz/Kraz.h"
-%include "../../../chrono_models/vehicle/kraz/Kraz_tractor.h"
-%include "../../../chrono_models/vehicle/kraz/Kraz_trailer.h"
+%include "../../../chrono_models/vehicle/vertiwheeler/Vertiwheeler.h"
+%include "../../../chrono_models/vehicle/vertiwheeler/Vertiwheeler_Vehicle.h"

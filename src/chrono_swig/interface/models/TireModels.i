@@ -37,8 +37,8 @@
 #include "chrono_models/vehicle/feda/FEDA_Pac02Tire.h"
 #include "chrono_models/vehicle/feda/FEDA_RigidTire.h"
 
-#include "chrono_models/vehicle/bmw/BMW_E90_TMsimpleTireFront.h"
-#include "chrono_models/vehicle/bmw/BMW_E90_TMsimpleTireRear.h"
+#include "chrono_models/vehicle/vertiwheeler/Vertiwheeler_RigidTire.h"
+#include "chrono_models/vehicle/vertiwheeler/Vertiwheeler_TMeasyTire.h"
 %}
 
 %import "chrono_swig/interface/vehicle/ChTire.i"
@@ -65,8 +65,9 @@
 %shared_ptr(chrono::vehicle::artcar::ARTcar_RigidTire)
 %shared_ptr(chrono::vehicle::feda::FEDA_Pac02Tire)
 %shared_ptr(chrono::vehicle::feda::FEDA_RigidTire)
-%shared_ptr(chrono::vehicle::bmw::BMW_E90_TMsimpleTireFront)
-%shared_ptr(chrono::vehicle::bmw::BMW_E90_TMsimpleTireRear)
+
+%shared_ptr(chrono::vehicle::vertiwheeler::Vertiwheeler_RigidTire)
+%shared_ptr(chrono::vehicle::vertiwheeler::Vertiwheeler_TMeasyTire)
 
 // Model:
 
@@ -97,5 +98,5 @@
 %include "../../../chrono_models/vehicle/feda/FEDA_Pac02Tire.h"
 %include "../../../chrono_models/vehicle/feda/FEDA_RigidTire.h"
 
-%include "../../../chrono_models/vehicle/bmw/BMW_E90_TMsimpleTireFront.h"
-%include "../../../chrono_models/vehicle/bmw/BMW_E90_TMsimpleTireRear.h"
+%include "../../../chrono_models/vehicle/vertiwheeler/Vertiwheeler_RigidTire.h"
+%include "../../../chrono_models/vehicle/vertiwheeler/Vertiwheeler_TMeasyTire.h"

@@ -984,6 +984,37 @@ set(CVM_KRAZ_FILES
 )
 source_group("kraz" FILES ${CVM_KRAZ_FILES})
 
+set(CVM_VERTIWHEELER_FILES
+    vertiwheeler/Vertiwheeler_BrakeSimple.cpp
+    vertiwheeler/Vertiwheeler_BrakeSimple.h
+    vertiwheeler/Vertiwheeler_Chassis.cpp
+    vertiwheeler/Vertiwheeler_Chassis.h
+    vertiwheeler/Vertiwheeler_BellcrankSolid3LinkAxle.cpp
+    vertiwheeler/Vertiwheeler_BellcrankSolid3LinkAxle.h
+    vertiwheeler/Vertiwheeler_Solid3LinkAxle.cpp
+    vertiwheeler/Vertiwheeler_Solid3LinkAxle.h
+    vertiwheeler/Vertiwheeler_Driveline4WD.cpp
+    vertiwheeler/Vertiwheeler_Driveline4WD.h
+    vertiwheeler/Vertiwheeler_RotaryArm.cpp
+    vertiwheeler/Vertiwheeler_RotaryArm.h
+    vertiwheeler/Vertiwheeler_RigidTire.cpp
+    vertiwheeler/Vertiwheeler_RigidTire.h
+    vertiwheeler/Vertiwheeler_TMeasyTire.cpp
+    vertiwheeler/Vertiwheeler_TMeasyTire.h
+    vertiwheeler/Vertiwheeler_AutomaticTransmissionSimpleMap.cpp
+    vertiwheeler/Vertiwheeler_AutomaticTransmissionSimpleMap.h
+    vertiwheeler/Vertiwheeler_EngineSimpleMap.cpp
+    vertiwheeler/Vertiwheeler_EngineSimpleMap.h
+    vertiwheeler/Vertiwheeler_Vehicle.cpp
+    vertiwheeler/Vertiwheeler_Vehicle.h
+    vertiwheeler/Vertiwheeler_Wheel.cpp
+    vertiwheeler/Vertiwheeler_Wheel.h
+    vertiwheeler/Vertiwheeler.cpp
+    vertiwheeler/Vertiwheeler.h
+)
+source_group("vertiwheeler" FILES ${CVM_VERTIWHEELER_FILES})
+
+
 # ----------------------------------------------------------------------------
 # Add the Chrono_vehicle_models library
 # ----------------------------------------------------------------------------
@@ -1012,6 +1043,7 @@ add_library(ChronoModels_vehicle
     ${CVM_MAN_FILES}
     ${CVM_ARTCAR_FILES}
     ${CVM_KRAZ_FILES}
+    ${CVM_VERTIWHEELER_FILES}
  )
 
 set_target_properties(ChronoModels_vehicle PROPERTIES

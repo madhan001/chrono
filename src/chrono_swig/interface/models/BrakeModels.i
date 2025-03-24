@@ -26,10 +26,11 @@
 #include "chrono_models/vehicle/artcar/ARTcar_BrakeSimple.h"
 #include "chrono_models/vehicle/feda/FEDA_BrakeSimple.h"
 #include "chrono_models/vehicle/feda/FEDA_BrakeShafts.h"
-#include "chrono_models/vehicle/bmw/BMW_E90_BrakeShafts.h"
 
 #include "chrono_models/vehicle/m113/M113_BrakeSimple.h"
 #include "chrono_models/vehicle/m113/M113_BrakeShafts.h"
+
+#include "chrono_models/vehicle/vertiwheeler/Vertiwheeler_BrakeSimple.h"
 %}
 
 
@@ -54,10 +55,10 @@
 %shared_ptr(chrono::vehicle::artcar::ARTcar_BrakeSimple)
 %shared_ptr(chrono::vehicle::feda::FEDA_BrakeSimple)
 %shared_ptr(chrono::vehicle::feda::FEDA_BrakeShafts)
-%shared_ptr(chrono::vehicle::bmw::BMW_E90_BrakeShafts)
 
 %shared_ptr(chrono::vehicle::m113::M113_BrakeSimple)
 %shared_ptr(chrono::vehicle::m113::M113_BrakeShafts)
+%shared_ptr(chrono::vehicle::vertiwheeler::Vertiwheeler_BrakeSimple)
 
 // Model:
 %include "../../../chrono_models/vehicle/hmmwv/brake/HMMWV_BrakeSimple.h"
@@ -75,7 +76,8 @@
 %include "../../../chrono_models/vehicle/artcar/ARTcar_BrakeSimple.h"
 %include "../../../chrono_models/vehicle/feda/FEDA_BrakeSimple.h"
 %include "../../../chrono_models/vehicle/feda/FEDA_BrakeShafts.h"
-%include "../../../chrono_models/vehicle/bmw/BMW_E90_BrakeShafts.h"
 
 %include "../../../chrono_models/vehicle/m113/M113_BrakeSimple.h"
 %include "../../../chrono_models/vehicle/m113/M113_BrakeShafts.h"
+
+%include "../../../chrono_models/vehicle/vertiwheeler/Vertiwheeler_BrakeSimple.h"

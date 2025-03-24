@@ -4,7 +4,7 @@
 
 #include <string>
 #include <vector>
-#include "chrono/core/ChVector3.h"
+#include "chrono/core/ChVector.h"
 #include "chrono/core/ChFrame.h"
 #include "chrono/assets/ChColor.h"
 #include "chrono/geometry/ChTriangleMeshConnected.h"
@@ -48,10 +48,10 @@
 
 #include "chrono_models/vehicle/feda/FEDA_Driveline4WD.h"
 
-#include "chrono_models/vehicle/bmw/BMW_E90_Driveline.h"
-
 #include "chrono_models/vehicle/m113/driveline/M113_SimpleDriveline.h"
 #include "chrono_models/vehicle/m113/driveline/M113_DrivelineBDS.h"
+
+#include "chrono_models/vehicle/vertiwheeler/Vertiwheeler_Driveline4WD.h"
 %}
 
 
@@ -68,10 +68,11 @@
 %shared_ptr(chrono::vehicle::gator::Gator_Driveline2WD)
 %shared_ptr(chrono::vehicle::artcar::ARTcar_Driveline4WD)
 %shared_ptr(chrono::vehicle::feda::FEDA_Driveline4WD)
-%shared_ptr(chrono::vehicle::bmw::BMW_E90_Driveline)
 
 %shared_ptr(chrono::vehicle::m113::M113_SimpleDriveline)
 %shared_ptr(chrono::vehicle::m113::M113_DrivelineBDS)
+
+%shared_ptr(chrono::vehicle::vertiwheeler::Vertiwheeler_Driveline4WD)
 
 /* Parse the header file to generate wrappers */
 %import "chrono_swig/interface/vehicle/ChDriveline.i"
@@ -98,7 +99,7 @@
 
 %include "../../../chrono_models/vehicle/feda/FEDA_Driveline4WD.h"
 
-%include "../../../chrono_models/vehicle/bmw/BMW_E90_Driveline.h"
-
 %include "../../../chrono_models/vehicle/m113/driveline/M113_SimpleDriveline.h"
 %include "../../../chrono_models/vehicle/m113/driveline/M113_DrivelineBDS.h"
+
+%include "../../../chrono_models/vehicle/vertiwheeler/Vertiwheeler_Driveline4WD.h"

@@ -4,7 +4,7 @@
 
 #include <string>
 #include <vector>
-#include "chrono/core/ChVector3.h"
+#include "chrono/core/ChVector.h"
 #include "chrono/core/ChFrame.h"
 #include "chrono/assets/ChColor.h"
 #include "chrono/geometry/ChTriangleMeshConnected.h"
@@ -41,8 +41,8 @@
 
 #include "chrono_models/vehicle/feda/FEDA_DoubleWishbone.h"
 
-#include "chrono_models/vehicle/bmw/BMW_E90_MacPhersonStrut.h"
-#include "chrono_models/vehicle/bmw/BMW_E90_DoubleWishbone.h"
+#include "chrono_models/vehicle/vertiwheeler/Vertiwheeler_BellcrankSolid3LinkAxle.h"
+#include "chrono_models/vehicle/vertiwheeler/Vertiwheeler_Solid3LinkAxle.h"
 %}
 
 %shared_ptr(chrono::vehicle::hmmwv::HMMWV_DoubleWishbone)
@@ -79,8 +79,8 @@
 %shared_ptr(chrono::vehicle::feda::FEDA_DoubleWishboneRear)
 %shared_ptr(chrono::vehicle::feda::FEDA_DoubleWishboneFront)
 
-%shared_ptr(chrono::vehicle::bmw::BMW_E90_MacPhersonStrut)
-%shared_ptr(chrono::vehicle::bmw::BMW_E90_DoubleWishbone)
+%shared_ptr(chrono::vehicle::vertiwheeler::Vertiwheeler_BellcrankSolid3LinkAxle)
+%shared_ptr(chrono::vehicle::vertiwheeler::Vertiwheeler_Solid3LinkAxle)
 
 /* Parse the header file to generate wrappers */
 %import "chrono_swig/interface/vehicle/ChSuspension.i"
@@ -111,5 +111,5 @@
 
 %include "../../../chrono_models/vehicle/feda/FEDA_DoubleWishbone.h"
 
-%include "../../../chrono_models/vehicle/bmw/BMW_E90_MacPhersonStrut.h"
-%include "../../../chrono_models/vehicle/bmw/BMW_E90_DoubleWishbone.h"
+%include "../../../chrono_models/vehicle/vertiwheeler/Vertiwheeler_BellcrankSolid3LinkAxle.h"
+%include "../../../chrono_models/vehicle/vertiwheeler/Vertiwheeler_Solid3LinkAxle.h"
