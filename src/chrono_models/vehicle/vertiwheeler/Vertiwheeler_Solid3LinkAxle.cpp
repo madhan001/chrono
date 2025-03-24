@@ -44,10 +44,10 @@ const double Vertiwheeler_Solid3LinkAxle::m_axleTubeRadius = 0.0476 * dimension_
 const double Vertiwheeler_Solid3LinkAxle::m_spindleRadius = 0.10 * dimension_scale_factor;
 const double Vertiwheeler_Solid3LinkAxle::m_spindleWidth = 0.06 * dimension_scale_factor;
 
-const ChVector<> Vertiwheeler_Solid3LinkAxle::m_axleTubeInertia = ChVector<>(329.00, 16.46, 330.00) * inertia_scale_factor;
-const ChVector<> Vertiwheeler_Solid3LinkAxle::m_spindleInertia = ChVector<>(0.04117 * 6.56, 0.07352 * 6.56, 0.04117 * 6.56) * inertia_scale_factor;
-const ChVector<> Vertiwheeler_Solid3LinkAxle::m_triangleInertia = ChVector<>(0.2, 0.2, 0.2) * inertia_scale_factor;
-const ChVector<> Vertiwheeler_Solid3LinkAxle::m_linkInertia = ChVector<>(0.05, 0.1, 0.1) * inertia_scale_factor;
+const ChVector3d Vertiwheeler_Solid3LinkAxle::m_axleTubeInertia = ChVector3d(329.00, 16.46, 330.00) * inertia_scale_factor;
+const ChVector3d Vertiwheeler_Solid3LinkAxle::m_spindleInertia = ChVector3d(0.04117 * 6.56, 0.07352 * 6.56, 0.04117 * 6.56) * inertia_scale_factor;
+const ChVector3d Vertiwheeler_Solid3LinkAxle::m_triangleInertia = ChVector3d(0.2, 0.2, 0.2) * inertia_scale_factor;
+const ChVector3d Vertiwheeler_Solid3LinkAxle::m_linkInertia = ChVector3d(0.05, 0.1, 0.1) * inertia_scale_factor;
 const double Vertiwheeler_Solid3LinkAxle::m_springDesignLength = 0.09; // 1/10 scale, 80mm
 const double Vertiwheeler_Solid3LinkAxle::m_springCoefficient1 = 0.02745 * 100;  // Linear spring rate (N/mm)
 const double Vertiwheeler_Solid3LinkAxle::m_springCoefficient2 = 0.013725 * 100;  // Quadratic spring rate (N/mm^2) - a fraction of the original quadratic term
@@ -101,7 +101,7 @@ class CH_MODELS_API Vertiwheeler_SpringForceRear : public ChLinkTSDA::ForceFunct
     double m_min_length;
     double m_max_length;
 
-    ChFunction_Recorder m_bump;
+    ChFunctionInterp m_bump;
 };
 
 Vertiwheeler_SpringForceRear::Vertiwheeler_SpringForceRear(double spring_constant1,
@@ -149,7 +149,7 @@ double Vertiwheeler_SpringForceRear::evaluate(double time,
     }
 
     force = (defl_spring * m_spring_constant1) + (defl_spring * std::abs(defl_spring) * m_spring_constant2) +
-            (m_bump.Get_y(defl_bump) - m_bump.Get_y(defl_rebound));
+            (m_bump.GetVal(defl_bump) - m_bump.GetVal(defl_rebound));
     
     return force;
 }
@@ -180,85 +180,85 @@ Vertiwheeler_Solid3LinkAxle::~Vertiwheeler_Solid3LinkAxle() {}
 // 
 // placeholder, made-up values
 
-// const ChVector<> Vertiwheeler_Solid3LinkAxle::getLocation(PointId which) {
+// const ChVector3d Vertiwheeler_Solid3LinkAxle::getLocation(PointId which) {
 //     // measurements scaled so that SPINDLE is at (0, 0.1, 0)
 //     switch (which) {
 //         case SPRING_A:
-//             return ChVector<>(0.0, 0.063285, 0.0086956);
+//             return ChVector3d(0.0, 0.063285, 0.0086956);
 //         case SPRING_C:
-//             return ChVector<>(0.0, 0.0565217, 0.0565217);
+//             return ChVector3d(0.0, 0.0565217, 0.0565217);
 //         case SHOCK_A:
-//             return ChVector<>(-0.0237681, 0.0664734, -0.0120772);
+//             return ChVector3d(-0.0237681, 0.0664734, -0.0120772);
 //         case SHOCK_C:
-//             return ChVector<>(-0.0241545, 0.05430, 0.0550724);
+//             return ChVector3d(-0.0241545, 0.05430, 0.0550724);
 //         case SPINDLE:
-//             return ChVector<>(0.0, 0.1, 0.0);
+//             return ChVector3d(0.0, 0.1, 0.0);
 //         case TRIANGLE_A:
-//             return ChVector<>(0.0, 0.0, 0.0251207);
+//             return ChVector3d(0.0, 0.0, 0.0251207);
 //         case TRIANGLE_C:
-//             return ChVector<>(-0.0736231, 0.0405797, 0.0096618);
+//             return ChVector3d(-0.0736231, 0.0405797, 0.0096618);
 //         case LINK_A:
-//             return ChVector<>(0.0111111, 0.0664734, -0.0086956);
+//             return ChVector3d(0.0111111, 0.0664734, -0.0086956);
 //         case LINK_C:
-//             return ChVector<>(0.1099516, 0.0386473, 0.0096618);
+//             return ChVector3d(0.1099516, 0.0386473, 0.0096618);
 //         default:
-//             return ChVector<>(0, 0, 0);
+//             return ChVector3d(0, 0, 0);
 //     }
 // }
 
-// const ChVector<> Vertiwheeler_Solid3LinkAxle::getLocation(PointId which) {
+// const ChVector3d Vertiwheeler_Solid3LinkAxle::getLocation(PointId which) {
 //     double tsda_chassis_z_offset = 0.0;
 
 //     switch (which) {
 //         case SPRING_A:
-//             return ChVector<>(0.01, 0.055, 0.01);  // "Spring" -> "Location Axle"
+//             return ChVector3d(0.01, 0.055, 0.01);  // "Spring" -> "Location Axle"
 //         case SPRING_C:
-//             return ChVector<>(0.0, 0.04, 0.09 + tsda_chassis_z_offset);  // "Spring" -> "Location Chassis"
+//             return ChVector3d(0.0, 0.04, 0.09 + tsda_chassis_z_offset);  // "Spring" -> "Location Chassis"
 //         case SHOCK_A:
-//             return ChVector<>(0.01, 0.06, 0.01);  // "Shock" -> "Location Axle"
+//             return ChVector3d(0.01, 0.06, 0.01);  // "Shock" -> "Location Axle"
 //         case SHOCK_C:
-//             return ChVector<>(0.00, 0.05, 0.11 + tsda_chassis_z_offset);  // "Shock" -> "Location Chassis"
+//             return ChVector3d(0.00, 0.05, 0.11 + tsda_chassis_z_offset);  // "Shock" -> "Location Chassis"
 //         case SPINDLE:
-//             return ChVector<>(0.0, 0.1, -0.1);  // "Spindle" -> "COM" y-component, scaled by 1/2 for each side
+//             return ChVector3d(0.0, 0.1, -0.1);  // "Spindle" -> "COM" y-component, scaled by 1/2 for each side
 //         case TRIANGLE_A:
-//             // return ChVector<>(0.0015, 0.0, -0.025);
-//             return ChVector<>(0.0015, 0.0, 0.019);  // "Triangular Link" -> "Location Axle"
+//             // return ChVector3d(0.0015, 0.0, -0.025);
+//             return ChVector3d(0.0015, 0.0, 0.019);  // "Triangular Link" -> "Location Axle"
 //         case TRIANGLE_C:
-//             return ChVector<>(0.09, 0.025, 0.03 + tsda_chassis_z_offset);  // "Triangular Link" -> "Location Chassis"
+//             return ChVector3d(0.09, 0.025, 0.03 + tsda_chassis_z_offset);  // "Triangular Link" -> "Location Chassis"
 //         case LINK_A:
-//             return ChVector<>(0.0, 0.06, 0.01);  // "Longitudinal Link" -> "Location Axle"
+//             return ChVector3d(0.0, 0.06, 0.01);  // "Longitudinal Link" -> "Location Axle"
 //         case LINK_C: // needs to be attached to the chassis
-//             return ChVector<>(-1 * 0.08, 0.03, 0.05 + tsda_chassis_z_offset);  // "Longitudinal Link" -> "Location Chassis"
+//             return ChVector3d(-1 * 0.08, 0.03, 0.05 + tsda_chassis_z_offset);  // "Longitudinal Link" -> "Location Chassis"
 //         default:
-//             return ChVector<>(0, 0, 0);
+//             return ChVector3d(0, 0, 0);
 //     }
 // }
 
 
-const ChVector<> Vertiwheeler_Solid3LinkAxle::getLocation(PointId which) {
+const ChVector3d Vertiwheeler_Solid3LinkAxle::getLocation(PointId which) {
 
     // Derivative of above
     switch (which) {
         case SPRING_A:
-            return ChVector<>(0.01, 0.055, 0.005);  // "Spring" -> "Location Axle"
+            return ChVector3d(0.01, 0.055, 0.005);  // "Spring" -> "Location Axle"
         case SPRING_C:
-            return ChVector<>(0.0, 0.04, 0.08);  // "Spring" -> "Location Chassis"
+            return ChVector3d(0.0, 0.04, 0.08);  // "Spring" -> "Location Chassis"
         case SHOCK_A: 
-            return ChVector<>(0.01, 0.07, -0.01);  // "Shock" -> "Location Axle"
+            return ChVector3d(0.01, 0.07, -0.01);  // "Shock" -> "Location Axle"
         case SHOCK_C:
-            return ChVector<>(0.00, 0.05, 0.11);  // "Shock" -> "Location Chassis"
+            return ChVector3d(0.00, 0.05, 0.11);  // "Shock" -> "Location Chassis"
         case SPINDLE:
-            return ChVector<>(0.0, 0.1, 0.0);  // "Spindle" -> "COM" y-component, scaled by 1/2 for each side
+            return ChVector3d(0.0, 0.1, 0.0);  // "Spindle" -> "COM" y-component, scaled by 1/2 for each side
         case TRIANGLE_A:
-            return ChVector<>(0.0015, 0.0, 0.0);  // "Triangular Link" -> "Location Axle"
+            return ChVector3d(0.0015, 0.0, 0.0);  // "Triangular Link" -> "Location Axle"
         case TRIANGLE_C:
-            return ChVector<>(0.10, 0.026, 0.03);  // "Triangular Link" -> "Location Chassis"
+            return ChVector3d(0.10, 0.026, 0.03);  // "Triangular Link" -> "Location Chassis"
         case LINK_A:
-            return ChVector<>(0.0, 0.06, 0);  // "Longitudinal Link" -> "Location Axle"
+            return ChVector3d(0.0, 0.06, 0);  // "Longitudinal Link" -> "Location Axle"
         case LINK_C: // needs to be attached to the chassis
-            return ChVector<>(0.1, 0.03, 0.05);  // "Longitudinal Link" -> "Location Chassis"
+            return ChVector3d(0.1, 0.03, 0.05);  // "Longitudinal Link" -> "Location Chassis"
         default:
-            return ChVector<>(0, 0, 0);
+            return ChVector3d(0, 0, 0);
     }   
 
 }
@@ -268,14 +268,14 @@ const ChVector<> Vertiwheeler_Solid3LinkAxle::getLocation(PointId which) {
 // -----------------------------------------------------------------------------
 
 void Vertiwheeler_Solid3LinkAxle::AddVisualizationLink(std::shared_ptr<ChBody> body,
-                                                         const ChVector<> pt_1,
-                                                         const ChVector<> pt_2,
+                                                         const ChVector3d pt_1,
+                                                         const ChVector3d pt_2,
                                                          const double radius,
                                                          const ChColor& color) {
     // no need for ChVehicleGeometry::AddVisualizationLink                                            
     // Express hardpoint locations in body frame.
-    ChVector<> p_1 = body->TransformPointParentToLocal(pt_1);
-    ChVector<> p_2 = body->TransformPointParentToLocal(pt_2);
+    ChVector3d p_1 = body->TransformPointParentToLocal(pt_1);
+    ChVector3d p_2 = body->TransformPointParentToLocal(pt_2);
 
     // utils::ChBodyGeometry::AddVisualizationCylinder(body, p_1, p_2, radius); // new version : see, https://github.com/zzhou292/chrono/commit/bf1f664aa81e5f8747eac2e63ea345d0cb7e03f2#diff-5fc1d2d793c4feda8f34d207a492ddd076c8ee35dfc0cf054a9047b16e597fd0L69
 

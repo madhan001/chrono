@@ -38,14 +38,14 @@ const double Vertiwheeler_BellcrankSolid3LinkAxle::m_axleTubeRadius = 0.00793333
 const double Vertiwheeler_BellcrankSolid3LinkAxle::m_spindleRadius = 0.016666666666666666;
 const double Vertiwheeler_BellcrankSolid3LinkAxle::m_spindleWidth = 0.01;
 
-const ChVector<> Vertiwheeler_BellcrankSolid3LinkAxle::m_axleTubeInertia = ChVector<>(0.59, 0.23, 0.59) * inertia_scale_factor;
-const ChVector<> Vertiwheeler_BellcrankSolid3LinkAxle::m_spindleInertia = ChVector<>(0.0075, 0.0134, 0.0075) * inertia_scale_factor;
-const ChVector<> Vertiwheeler_BellcrankSolid3LinkAxle::m_bellcrankInertia = ChVector<>(0.0014, 0.008, 0.0083) * inertia_scale_factor;
-const ChVector<> Vertiwheeler_BellcrankSolid3LinkAxle::m_knuckleInertia = ChVector<>(0.067, 0.11, 0.068) * inertia_scale_factor;
-const ChVector<> Vertiwheeler_BellcrankSolid3LinkAxle::m_draglinkInertia = ChVector<>(0.008, 0.019, 0.026) * inertia_scale_factor;
-const ChVector<> Vertiwheeler_BellcrankSolid3LinkAxle::m_triangleInertia = ChVector<>(0.0056, 0.0056, 0.0056) * inertia_scale_factor;
-const ChVector<> Vertiwheeler_BellcrankSolid3LinkAxle::m_linkInertia = ChVector<>(0.0014, 0.0028, 0.0028) * inertia_scale_factor;
-const ChVector<> Vertiwheeler_BellcrankSolid3LinkAxle::m_tierodInertia = ChVector<>(0.0014, 0.0028, 0.0029) * inertia_scale_factor;
+const ChVector3d Vertiwheeler_BellcrankSolid3LinkAxle::m_axleTubeInertia = ChVector3d(0.59, 0.23, 0.59) * inertia_scale_factor;
+const ChVector3d Vertiwheeler_BellcrankSolid3LinkAxle::m_spindleInertia = ChVector3d(0.0075, 0.0134, 0.0075) * inertia_scale_factor;
+const ChVector3d Vertiwheeler_BellcrankSolid3LinkAxle::m_bellcrankInertia = ChVector3d(0.0014, 0.008, 0.0083) * inertia_scale_factor;
+const ChVector3d Vertiwheeler_BellcrankSolid3LinkAxle::m_knuckleInertia = ChVector3d(0.067, 0.11, 0.068) * inertia_scale_factor;
+const ChVector3d Vertiwheeler_BellcrankSolid3LinkAxle::m_draglinkInertia = ChVector3d(0.008, 0.019, 0.026) * inertia_scale_factor;
+const ChVector3d Vertiwheeler_BellcrankSolid3LinkAxle::m_triangleInertia = ChVector3d(0.0056, 0.0056, 0.0056) * inertia_scale_factor;
+const ChVector3d Vertiwheeler_BellcrankSolid3LinkAxle::m_linkInertia = ChVector3d(0.0014, 0.0028, 0.0028) * inertia_scale_factor;
+const ChVector3d Vertiwheeler_BellcrankSolid3LinkAxle::m_tierodInertia = ChVector3d(0.0014, 0.0028, 0.0029) * inertia_scale_factor;
 
 // const double Vertiwheeler_BellcrankSolid3LinkAxle::m_springDesignLength = 0.09; // 1/10 scale
 // Spring Rate Conversion:
@@ -90,7 +90,7 @@ class CH_MODELS_API Vertiwheeler_SpringForceFront : public ChLinkTSDA::ForceFunc
     double m_min_length;
     double m_max_length;
 
-    ChFunction_Recorder m_bump;
+    ChFunctionInterp m_bump;
 };
 
 Vertiwheeler_SpringForceFront::Vertiwheeler_SpringForceFront(double spring_constant1,
@@ -135,7 +135,7 @@ double Vertiwheeler_SpringForceFront::evaluate(double time,
     }
 
     force = defl_spring * m_spring_constant1 + defl_spring * std::abs(defl_spring) * m_spring_constant2 +
-            m_bump.Get_y(defl_bump) - m_bump.Get_y(defl_rebound);
+            m_bump.GetVal(defl_bump) - m_bump.GetVal(defl_rebound);
 
     return force;
 }
@@ -159,63 +159,63 @@ Vertiwheeler_BellcrankSolid3LinkAxle::~Vertiwheeler_BellcrankSolid3LinkAxle() {}
 
 // -----------------------------------------------------------------------------
 // safe values : https://aistudio.google.com/prompts/1OEBo-UZDmkufYSdPrP0glcxCkpktAsDx
-const ChVector<> Vertiwheeler_BellcrankSolid3LinkAxle::getLocation(PointId which) {
+const ChVector3d Vertiwheeler_BellcrankSolid3LinkAxle::getLocation(PointId which) {
     // measurements scaled so that SPINDLE is at (0.0, 0.1, 0.0)
     // BASELINE VALUES
     switch (which) {
         case SPRING_A:    // (0.000, 0.590, 0.090)
-            return ChVector<>(0.0000, 0.0571, 0.0087);
+            return ChVector3d(0.0000, 0.0571, 0.0087);
 
         case SPRING_C:    // (0.010, 0.552, 0.588)
-            return ChVector<>(0.0010, 0.0535, 0.0569);
+            return ChVector3d(0.0010, 0.0535, 0.0569);
 
         case SHOCK_A:     // (0.246, 0.523, -0.125)
-            return ChVector<>(0.0238, 0.0507, -0.0121);
+            return ChVector3d(0.0238, 0.0507, -0.0121);
 
         case SHOCK_C:     // (0.235, 0.562, 0.570)
-            return ChVector<>(0.0228, 0.0544, 0.0552);
+            return ChVector3d(0.0228, 0.0544, 0.0552);
 
         case SPINDLE:     // (0.0, 1.033, 0.0)
-            return ChVector<>(0.0000, 0.1000, 0.0000);
+            return ChVector3d(0.0000, 0.1000, 0.0000);
 
         case TRIANGLE_A:  // (0.125, 0.000, 0.260)
-            return ChVector<>(0.0121, 0.0000, 0.0252);
+            return ChVector3d(0.0121, 0.0000, 0.0252);
 
         case TRIANGLE_C:  // (0.871, 0.420, 0.165)
-            return ChVector<>(0.0845, 0.0406, 0.0160);
+            return ChVector3d(0.0845, 0.0406, 0.0160);
 
         case LINK_A:      // (-0.115, 0.490, -0.090)
-            return ChVector<>(-0.0111, 0.0474, -0.0087);
+            return ChVector3d(-0.0111, 0.0474, -0.0087);
 
         case LINK_C:      // (-1.138, 0.270, 0.115)
-            return ChVector<>(-0.1102, 0.0261, 0.0111);
+            return ChVector3d(-0.1102, 0.0261, 0.0111);
 
         case DRAGLINK_S:  // (0.741, -0.217, 0.089)
-            return ChVector<>(0.0718, -0.0210, 0.0086);
+            return ChVector3d(0.0718, -0.0210, 0.0086);
 
         case BELLCRANK_A: // (-0.023, 0.000, 0.250)
-            return ChVector<>(-0.0022, 0.0000, 0.0242);
+            return ChVector3d(-0.0022, 0.0000, 0.0242);
 
         case BELLCRANK_D: // (0.045, 0.256, 0.153)
-            return ChVector<>(0.0044, 0.0248, 0.0148);
+            return ChVector3d(0.0044, 0.0248, 0.0148);
 
         case BELLCRANK_T: // (-0.273, 0.042, 0.153)
-            return ChVector<>(-0.0264, 0.0041, 0.0148);
+            return ChVector3d(-0.0264, 0.0041, 0.0148);
 
         case KNUCKLE_L:   // (0.000, 0.853748866, -0.100)
-            return ChVector<>(0.0000, 0.0826, -0.0097);
+            return ChVector3d(0.0000, 0.0826, -0.0097);
 
         case KNUCKLE_U:   // (0.000, 0.836251134,  0.100)
-            return ChVector<>(0.0000, 0.0810,  0.0097);
+            return ChVector3d(0.0000, 0.0810,  0.0097);
 
         case KNUCKLE_T:   // (-0.236, 0.800, 0.153)
-            return ChVector<>(-0.0228, 0.0774, 0.0148);
+            return ChVector3d(-0.0228, 0.0774, 0.0148);
 
         case KNUCKLE_CM:  // (0.000, 0.937, 0.000)
-            return ChVector<>(0.0000, 0.0907, 0.0000);
+            return ChVector3d(0.0000, 0.0907, 0.0000);
 
         default:
-            return ChVector<>(0, 0, 0);
+            return ChVector3d(0, 0, 0);
 
     }
 }
@@ -226,14 +226,14 @@ const ChVector<> Vertiwheeler_BellcrankSolid3LinkAxle::getLocation(PointId which
 // -----------------------------------------------------------------------------
 
 void Vertiwheeler_BellcrankSolid3LinkAxle::AddVisualizationLink(std::shared_ptr<ChBody> body,
-                                                         const ChVector<> pt_1,
-                                                         const ChVector<> pt_2,
+                                                         const ChVector3d pt_1,
+                                                         const ChVector3d pt_2,
                                                          const double radius,
                                                          const ChColor& color) {
     // no need for ChVehicleGeometry::AddVisualizationLink                                            
     // Express hardpoint locations in body frame.
-    ChVector<> p_1 = body->TransformPointParentToLocal(pt_1);
-    ChVector<> p_2 = body->TransformPointParentToLocal(pt_2);
+    ChVector3d p_1 = body->TransformPointParentToLocal(pt_1);
+    ChVector3d p_2 = body->TransformPointParentToLocal(pt_2);
 
     // utils::ChBodyGeometry::AddVisualizationCylinder(body, p_1, p_2, radius); // new version : see, https://github.com/zzhou292/chrono/commit/bf1f664aa81e5f8747eac2e63ea345d0cb7e03f2#diff-5fc1d2d793c4feda8f34d207a492ddd076c8ee35dfc0cf054a9047b16e597fd0L69
 
@@ -251,23 +251,23 @@ void Vertiwheeler_BellcrankSolid3LinkAxle::AddVisualizationAssets(VisualizationT
         // All points in getLocation(enum) are in the axleTube frame, so pass m_axleTube body 
         // visualize the link bodies
         AddVisualizationLink(m_axleTube, getLocation(LINK_A), getLocation(LINK_C), 0.003, ChColor(0.3f, 0.3f, 1.0f));
-        AddVisualizationLink(m_axleTube, getLocation(LINK_A) * ChVector<>(1,-1,1), getLocation(LINK_C) * ChVector<>(1,-1,1), 0.003, ChColor(0.3f, 0.3f, 1.0f));
+        AddVisualizationLink(m_axleTube, getLocation(LINK_A) * ChVector3d(1,-1,1), getLocation(LINK_C) * ChVector3d(1,-1,1), 0.003, ChColor(0.3f, 0.3f, 1.0f));
 
         //visualize the triangle body
         AddVisualizationLink(m_axleTube, getLocation(TRIANGLE_A), getLocation(TRIANGLE_C), 0.003, ChColor(0.3f, 0.3f, 1.0f));
-        AddVisualizationLink(m_axleTube, getLocation(TRIANGLE_A) * ChVector<>(1,-1,1), getLocation(TRIANGLE_C) * ChVector<>(1,-1,1), 0.003, ChColor(0.3f, 0.3f, 1.0f));
+        AddVisualizationLink(m_axleTube, getLocation(TRIANGLE_A) * ChVector3d(1,-1,1), getLocation(TRIANGLE_C) * ChVector3d(1,-1,1), 0.003, ChColor(0.3f, 0.3f, 1.0f));
 
         // visualize the draglink
         // visualize BELLCRANK_T - KNUCKLE_T
         AddVisualizationLink(m_axleTube, getLocation(BELLCRANK_T), getLocation(KNUCKLE_T) , 0.002, ChColor(0.6f, 0.3f, 0.3f));
-        AddVisualizationLink(m_axleTube, getLocation(BELLCRANK_T) * ChVector<>(1,-1,1), getLocation(KNUCKLE_T) * ChVector<>(1,-1,1), 0.002, ChColor(0.6f, 0.3f, 0.3f));
+        AddVisualizationLink(m_axleTube, getLocation(BELLCRANK_T) * ChVector3d(1,-1,1), getLocation(KNUCKLE_T) * ChVector3d(1,-1,1), 0.002, ChColor(0.6f, 0.3f, 0.3f));
         
         // visualize the knuckle kingpin
         AddVisualizationLink(m_axleTube, getLocation(KNUCKLE_L), getLocation(KNUCKLE_U), 0.002, ChColor(0.6f, 0.3f, 0.3f));
-        AddVisualizationLink(m_axleTube, getLocation(KNUCKLE_L) * ChVector<>(1,-1,1), getLocation(KNUCKLE_U) * ChVector<>(1,-1,1), 0.002, ChColor(0.6f, 0.3f, 0.3f));
+        AddVisualizationLink(m_axleTube, getLocation(KNUCKLE_L) * ChVector3d(1,-1,1), getLocation(KNUCKLE_U) * ChVector3d(1,-1,1), 0.002, ChColor(0.6f, 0.3f, 0.3f));
 
         // visualize the bellcrank 
-        AddVisualizationLink(m_axleTube, getLocation(BELLCRANK_A), getLocation(BELLCRANK_A) + ChVector<>(0,0,0.004), 0.002, ChColor(0.6f, 0.3f, 0.3f));
+        AddVisualizationLink(m_axleTube, getLocation(BELLCRANK_A), getLocation(BELLCRANK_A) + ChVector3d(0,0,0.004), 0.002, ChColor(0.6f, 0.3f, 0.3f));
 
         // ChVehicleGeometry::SphereShape(m_knuckle[LEFT],)
         // AddVisualizationLink(m_linkBody[LEFT], getLocation(LINK_A), getLocation(LINK_C), 0.005, ChColor(0.3f, 0.3f, 1.0f));

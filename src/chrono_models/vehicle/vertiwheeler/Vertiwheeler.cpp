@@ -43,7 +43,7 @@ Vertiwheeler::Vertiwheeler()
       m_tireType(TireModelType::RIGID),
       m_tire_step_size(-1),
       m_initFwdVel(0),
-      m_initPos(ChCoordsys<>(ChVector<>(0, 0, 1), QUNIT)),
+      m_initPos(ChCoordsys<>(ChVector3d(0, 0, 1), QUNIT)),
       m_initOmega({0, 0, 0, 0}),
       m_apply_drag(false),
       m_stall_torque(1.2),
@@ -61,7 +61,7 @@ Vertiwheeler::Vertiwheeler(ChSystem* system)
       m_tireType(TireModelType::RIGID),
       m_tire_step_size(-1),
       m_initFwdVel(0),
-      m_initPos(ChCoordsys<>(ChVector<>(0, 0, 1), QUNIT)),
+      m_initPos(ChCoordsys<>(ChVector3d(0, 0, 1), QUNIT)),
       m_initOmega({0, 0, 0, 0}),
       m_apply_drag(false),
       m_stall_torque(1.2),
@@ -105,16 +105,16 @@ void Vertiwheeler::Initialize() {
     engine->m_Kv_rating = 1200; // 21000 rpm/V
 
 
-    GetLog() << "Engine Initialized\n";
-    GetLog() << "Motor Voltage Ratio: " << engine->m_voltage_ratio << "\n";
-    GetLog() << "Motor Stall Torque: " << engine->m_stall_torque << "\n";
-    GetLog() << "Motor Kv: " << engine->m_Kv_rating << "\n";
-    GetLog() << "Motor Supply Voltage: " << engine->m_supply_voltage << "\n";
-    GetLog() << "Motor Max RPM: " << engine->GetMaxEngineSpeed() << "\n\n\n";
+    std::cout << "Engine Initialized\n";
+    std::cout << "Motor Voltage Ratio: " << engine->m_voltage_ratio << "\n";
+    std::cout << "Motor Stall Torque: " << engine->m_stall_torque << "\n";
+    std::cout << "Motor Kv: " << engine->m_Kv_rating << "\n";
+    std::cout << "Motor Supply Voltage: " << engine->m_supply_voltage << "\n";
+    std::cout << "Motor Max RPM: " << engine->GetMaxEngineSpeed() << "\n\n\n";
 
     m_vehicle->InitializePowertrain(powertrain);
 
-    GetLog() << "Powertrain Initialized\n\n\n";
+    std::cout << "Powertrain Initialized\n\n\n";
 
     // Create the tires and set parameters depending on type.
     // bool use_mesh = (m_tireType == TireModelType::RIGID_MESH);
@@ -156,7 +156,7 @@ void Vertiwheeler::Initialize() {
             m_vehicle->InitializeTire(tire_RL, m_vehicle->GetAxle(1)->m_wheels[LEFT], VisualizationType::PRIMITIVES);
             m_vehicle->InitializeTire(tire_RR, m_vehicle->GetAxle(1)->m_wheels[RIGHT], VisualizationType::PRIMITIVES);
             m_tire_mass = tire_FL->GetMass();
-            GetLog() << "Tire mass: " << m_tire_mass << "\n";
+            std::cout << "Tire mass: " << m_tire_mass << "\n";
             break;
         }
     }
@@ -165,7 +165,7 @@ void Vertiwheeler::Initialize() {
         for (auto& wheel : axle->GetWheels()) {
             if (m_tire_step_size > 0)
                 wheel->GetTire()->SetStepsize(m_tire_step_size);
-                GetLog() << "Tire step size: " << m_tire_step_size << "\n";
+                std::cout << "Tire step size: " << m_tire_step_size << "\n";
         }
     }
 

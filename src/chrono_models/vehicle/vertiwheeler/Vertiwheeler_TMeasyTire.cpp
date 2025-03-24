@@ -38,7 +38,7 @@ const std::string Vertiwheeler_TMeasyTire::m_meshFile_right = "vertiwheeler/tire
 const double Vertiwheeler_TMeasyTire::m_mass = .200;
 // const double Vertiwheeler_TMeasyTire::m_mass = .08;
 
-const ChVector<> Vertiwheeler_TMeasyTire::m_inertia(.0008, 0.001, .0008);
+const ChVector3d Vertiwheeler_TMeasyTire::m_inertia(.0008, 0.001, .0008);
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------

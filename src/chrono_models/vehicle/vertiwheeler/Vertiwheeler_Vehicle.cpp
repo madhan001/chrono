@@ -89,15 +89,15 @@ void Vertiwheeler_Vehicle::Initialize(const ChCoordsys<>& chassisPos, double cha
 
     // Initialize the steering subsystem (specify the steering subsystem's frame relative to the chassis reference
     // frame).
-    ChVector<> offset = ChVector<>(0, 0, 0);
+    ChVector3d offset = ChVector3d(0, 0, 0);
     ChQuaternion<> rotation = ChQuaternion<>(1, 0, 0, 0);
     m_steerings[0]->Initialize(m_chassis, offset, rotation);
 
     // Initialize the axle subsystems.
-    m_axles[0]->Initialize(m_chassis, nullptr, m_steerings[0], ChVector<>(0.153, 0, -0.012), ChVector<>(1,0,0), 0.0, m_omega[0],m_omega[1]);
+    m_axles[0]->Initialize(m_chassis, nullptr, m_steerings[0], ChVector3d(0.153, 0, -0.012), ChVector3d(1,0,0), 0.0, m_omega[0],m_omega[1]);
 
     //4TH ARGUMENT IS THE OFFSET OF THE WHEEL FROM THE CENTER OF THE CHASSIS
-    m_axles[1]->Initialize(m_chassis, nullptr,nullptr, ChVector<>(-0.153+(-0.005), 0, -0.012), ChVector<>(0), 0.0, m_omega[2], m_omega[3]);
+    m_axles[1]->Initialize(m_chassis, nullptr,nullptr, ChVector3d(-0.153+(-0.005), 0, -0.012), ChVector3d(0), 0.0, m_omega[2], m_omega[3]);
     std::vector<int> driven_susp_indexes = {0, 1};
     m_driveline->Initialize(m_chassis, m_axles, driven_susp_indexes);
 
@@ -106,21 +106,21 @@ void Vertiwheeler_Vehicle::Initialize(const ChCoordsys<>& chassisPos, double cha
 }
 
 
-void Vertiwheeler_Vehicle::LogHardpointLocations() {
-    GetLog().SetNumFormat("%7.3f");
+// void Vertiwheeler_Vehicle::LogHardpointLocations() {
+//     std::cout.SetNumFormat("%7.3f");
 
-    GetLog() << "\n---- FRONT suspension hardpoint locations (LEFT side)\n";
-    std::static_pointer_cast<ChSolidBellcrankThreeLinkAxle>(m_axles[0]->m_suspension)
-        ->LogHardpointLocations(ChVector<>(0, 0, 0), false);
+//     std::cout << "\n---- FRONT suspension hardpoint locations (LEFT side)\n";
+//     std::static_pointer_cast<ChSolidBellcrankThreeLinkAxle>(m_axles[0]->m_suspension)
+//         ->LogHardpointLocations(ChVector3d(0, 0, 0), false);
 
-    GetLog() << "\n---- REAR suspension hardpoint locations (LEFT side)\n";
-    std::static_pointer_cast<ChSolidThreeLinkAxle>(m_axles[1]->m_suspension)
-        ->LogHardpointLocations(ChVector<>(0, 0, 0), false);
+//     std::cout << "\n---- REAR suspension hardpoint locations (LEFT side)\n";
+//     std::static_pointer_cast<ChSolidThreeLinkAxle>(m_axles[1]->m_suspension)
+//         ->LogHardpointLocations(ChVector3d(0, 0, 0), false);
 
-    GetLog() << "\n\n";
+//     std::cout << "\n\n";
 
-    GetLog().SetNumFormat("%g");
-}
+//     std::cout.SetNumFormat("%g");
+// }
 
 // -----------------------------------------------------------------------------
 // Log the spring length, deformation, and force.
@@ -131,17 +131,17 @@ void Vertiwheeler_Vehicle::LogHardpointLocations() {
 // -----------------------------------------------------------------------------
 
 void Vertiwheeler_Vehicle::DebugLog(int what) {
-    GetLog().SetNumFormat("%10.2f");
+    // std::cout.SetNumFormat("%10.2f");
 
     if (what & OUT_SPRINGS || what & OUT_SHOCKS) {
-        GetLog() << "\n---- Spring and Shock information\n\n";
+        std::cout << "\n---- Spring and Shock information\n\n";
         for (int axle = 0; axle < 2; axle++) {
             std::string axlePosition = (axle == 0) ? "Front" : "Rear ";
             for (int side = LEFT; side <= RIGHT; side++) {
                 for (auto& forceTSDA :
                      m_axles[axle]->m_suspension->ReportSuspensionForce(static_cast<VehicleSide>(side))) {
-                    GetLog() << axlePosition << " " << (side == LEFT ? "Left " : "Right") << " ";
-                    GetLog() << forceTSDA.name << std::string(10 - std::max(0, (int)forceTSDA.name.size()), ' ')
+                    std::cout << axlePosition << " " << (side == LEFT ? "Left " : "Right") << " ";
+                    std::cout << forceTSDA.name << std::string(10 - std::max(0, (int)forceTSDA.name.size()), ' ')
                              << " Length: " << forceTSDA.length << " m, Force: " << forceTSDA.force << " N\n";
                 }
             }
@@ -153,7 +153,7 @@ void Vertiwheeler_Vehicle::DebugLog(int what) {
         LogConstraintViolations();
     }
 
-    GetLog().SetNumFormat("%g");
+    // std::cout.SetNumFormat("%g");
 }
 /// @} vehicle_models_vertiwheeler
 }  // namespace vertiwheeler

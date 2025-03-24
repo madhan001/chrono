@@ -22,7 +22,7 @@ namespace vehicle {
 namespace vertiwheeler {
 /// @addtogroup vehicle_models_vertiwheeler
 /// @{
-const double rpm2rads = CH_C_PI / 30;
+const double rpm2rads = CH_PI / 30;
 
 Vertiwheeler_EngineSimpleMap::Vertiwheeler_EngineSimpleMap(const std::string& name)
     : ChEngineSimpleMap(name),
@@ -35,11 +35,11 @@ Vertiwheeler_EngineSimpleMap::Vertiwheeler_EngineSimpleMap(const std::string& na
 
 double Vertiwheeler_EngineSimpleMap::GetMaxEngineSpeed() {
     double max_rpm = m_Kv_rating * m_supply_voltage * m_voltage_ratio;
-    // GetLog() << "Max RPM: " << max_rpm << "\n";
+    // std::cout << "Max RPM: " << max_rpm << "\n";
     return max_rpm * rpm2rads;
 }
 
-void Vertiwheeler_EngineSimpleMap::SetEngineTorqueMaps(ChFunction_Recorder& map0, ChFunction_Recorder& mapF) {
+void Vertiwheeler_EngineSimpleMap::SetEngineTorqueMaps(ChFunctionInterp& map0, ChFunctionInterp& mapF) {
     double max_rpm = m_Kv_rating * m_supply_voltage * m_voltage_ratio;
     double max_speed = max_rpm * rpm2rads;
  

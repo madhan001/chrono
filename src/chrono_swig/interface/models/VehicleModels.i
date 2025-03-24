@@ -4,7 +4,7 @@
 
 #include "chrono/core/ChCoordsys.h"
 #include "chrono/physics/ChSystem.h"
-#include "chrono/physics/ChMaterialSurface.h"
+#include "chrono/physics/ChContactMaterial.h"
 
 #include "chrono_vehicle/wheeled_vehicle/ChWheeledVehicle.h"
 #include "chrono_vehicle/tracked_vehicle/ChTrackedVehicle.h"

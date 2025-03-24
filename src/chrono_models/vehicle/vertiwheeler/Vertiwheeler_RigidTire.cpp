@@ -41,7 +41,7 @@ const double Vertiwheeler_RigidTire::m_radius = .117/2; // actual value
 const double Vertiwheeler_RigidTire::m_width = .041; // actual value
 
 const double Vertiwheeler_RigidTire::m_mass = .143; // 163g per tire and wheel, 20g for wheel, 143g for tire
-const ChVector<> Vertiwheeler_RigidTire::m_inertia(.0008, 0.001, .0008);
+const ChVector3d Vertiwheeler_RigidTire::m_inertia(.0008, 0.001, .0008);
 
 const std::string Vertiwheeler_RigidTire::m_meshName = "Vertiwheeler_tire_POV_geom";
 // const std::string Vertiwheeler_RigidTire::m_meshFile = "vertiwheeler/tire.obj";
@@ -61,7 +61,7 @@ void Vertiwheeler_RigidTire::CreateContactMaterial(ChContactMethod contact_metho
     minfo.Y = 2e7f;
     m_material = minfo.CreateMaterial(contact_method);
     // m_material = minfo.CreateMaterial(ChContactMethod::NSC);
-    // GetLog()<< "BP : Vertiwheeler_RigidTire::CreateContactMaterial\n";
+    // std::cout<< "BP : Vertiwheeler_RigidTire::CreateContactMaterial\n";
 
 }
 
