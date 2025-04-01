@@ -76,7 +76,7 @@ class CH_MODELS_API Vertiwheeler {
     void Synchronize(double time, const DriverInputs& driver_inputs, const ChTerrain& terrain);
     void Advance(double step);
 
-    void LogHardpointLocations() { m_vehicle->LogHardpointLocations(); }
+    // void LogHardpointLocations() { m_vehicle->LogHardpointLocations(); }
     void DebugLog(int what) { m_vehicle->DebugLog(what); }
 
   protected:

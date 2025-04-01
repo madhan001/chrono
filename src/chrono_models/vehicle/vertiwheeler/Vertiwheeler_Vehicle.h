@@ -66,7 +66,7 @@ class CH_MODELS_API Vertiwheeler_Vehicle : public ChWheeledVehicle {
     virtual void Initialize(const ChCoordsys<>& chassisPos, double chassisFwdVel = 0) override;
 
     // Log debugging information
-    void LogHardpointLocations();  /// suspension hardpoints at design
+    // void LogHardpointLocations();  /// suspension hardpoints at design
     void DebugLog(int what);       /// shock forces and lengths, constraints, etc.
 
   private:
