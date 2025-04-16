@@ -1,0 +1,36 @@
+# change the version number in case of a release build
+package:
+  name: pychrono
+  version: 9.0.1
+
+source:
+  path: /home/chrono/Documents/chrono_build
+
+build:
+  rpaths:
+    - lib/
+
+  number: 1
+  string: py39_1
+  binary_relocation: true
+  
+requirements:
+  build:
+    - python
+    - numpy >=1.24.0
+
+  run:
+    - python
+    - pythonocc-core ==7.4.0 # [py<=39 and not arm64]
+    - mkl ==2020.0.0 # [not arm64]
+    - numpy >=1.24.0
+    - irrlicht
+    - glew
+    - glfw
+    - eigen ==3.4.0
+
+about:
+  home: https://github.com/projectchrono/chrono
+  license: BSD 3-Clause
+  license_family: BSD
+  summary: High performance library for multiphysics and multibody dynamics simulations
