@@ -35,7 +35,9 @@ const ChVector3d HMMWV_Chassis::m_body_inertiaXX(1078.52, 2955.66, 3570.20);
 const ChVector3d HMMWV_Chassis::m_body_inertiaXY(0, 0, 0);
 const ChVector3d HMMWV_Chassis::m_body_COM_loc(0.056, 0, 0.213);
 const ChVector3d HMMWV_Chassis::m_connector_rear_loc(-2.5, 0, -0.25);
-const ChCoordsys<> HMMWV_Chassis::m_driverCsys(ChVector3d(0.87, 0.7, 1.05), ChQuaternion<>(1, 0, 0, 0));
+// Original camera pos on the HMMWV chassis
+// const ChCoordsys<> HMMWV_Chassis::m_driverCsys(ChVector3d(0.87, 0.7, 1.05), ChQuaternion<>(1, 0, 0, 0));
+const ChCoordsys<> HMMWV_Chassis::m_driverCsys(ChVector3d(2.6, 0.0, 1.0), ChQuaternion<>(1, 0, 0, 0));
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
