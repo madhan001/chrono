@@ -13,6 +13,10 @@
 # - This script is configured to build ONLY Release configurations using Unix Makefiles.
 # -------------------------------------------------------------------------------------------------------
 
+echo -e "\n------------------------ Installing system dependencies\n"
+sudo apt-get update
+sudo apt-get install libtinyxml-dev libconsole-bridge-dev liburdfdom-headers-dev
+
 DOWNLOAD=ON
 
 URDF_INSTALL_DIR="$HOME/Documents/chrono/libraries/urdf"
