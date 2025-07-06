@@ -46,7 +46,7 @@ tire_vis_type = veh.VisualizationType_MESH
 chassis_collision_type = veh.CollisionType_NONE
 
 # Type of tire model (RIGID, TMEASY)
-tire_model = veh.TireModelType_TMEASY
+tire_model = veh.TireModelType_RIGID
 
 # Rigid terrain
 terrainHeight = 0      # terrain height (FLAT terrain only)
@@ -57,7 +57,7 @@ terrainWidth = 200.0   # size in Y direction
 trackPoint = chrono.ChVector3d(-3.0, 0.0, 1.75)
 
 # Contact method
-contact_method = chrono.ChContactMethod_SMC
+contact_method = chrono.ChContactMethod_NSC
 contact_vis = False
 
 # Simulation step sizes
@@ -86,7 +86,8 @@ truck.SetChassisFixed(False)
 truck.SetInitPosition(chrono.ChCoordsysd(initLoc, initRot))
 truck.SetTireType(tire_model)
 truck.SetTireStepSize(tire_step_size)
-truck.SetDriveline8WD(True)
+# truck.SetDriveline8WD(True)
+# truck.SetDriveline6WD(True)
 truck.Initialize()
 
 truck.SetChassisVisualizationType(chassis_vis_type)

@@ -28,13 +28,13 @@ namespace man {
 // Static variables
 // -----------------------------------------------------------------------------
 
-const double MAN_10t_RotaryArm2::m_pitmanArmMass = 1.605;
+const double MAN_10t_RotaryArm2::m_pitmanArmMass = 15.0;
 
 const double MAN_10t_RotaryArm2::m_pitmanArmRadius = 0.02;
 
 const double MAN_10t_RotaryArm2::m_maxAngle = 28.37 * (CH_PI / 180);
 
-const ChVector3d MAN_10t_RotaryArm2::m_pitmanArmInertiaMoments(0.00638, 0.00756, 0.00150);
+const ChVector3d MAN_10t_RotaryArm2::m_pitmanArmInertiaMoments(0.10, 0.12, 0.03);
 const ChVector3d MAN_10t_RotaryArm2::m_pitmanArmInertiaProducts(0.0, 0.0, 0.0);
 
 // -----------------------------------------------------------------------------

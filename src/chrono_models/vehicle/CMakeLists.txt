@@ -217,12 +217,16 @@ set(CVM_FEDA_FILES
     feda/FEDA_Driveline4WD.h
     feda/FEDA_DoubleWishbone.cpp
     feda/FEDA_DoubleWishbone.h
+    feda/FEDA_DoubleWishboneReduced.h
+    feda/FEDA_DoubleWishboneReduced.cpp
     feda/FEDA_EngineSimpleMap.cpp
     feda/FEDA_EngineSimpleMap.h
     feda/FEDA_Pac02Tire.cpp
     feda/FEDA_Pac02Tire.h
     feda/FEDA_PitmanArm.cpp
     feda/FEDA_PitmanArm.h
+    feda/FEDA_RackPinion.cpp
+    feda/FEDA_RackPinion.h
     feda/FEDA_RigidTire.cpp
     feda/FEDA_RigidTire.h
     feda/FEDA_TMeasyTire.cpp
@@ -230,7 +234,7 @@ set(CVM_FEDA_FILES
     feda/FEDA_TMsimpleTire.cpp
     feda/FEDA_TMsimpleTire.h
     feda/FEDA_Vehicle.cpp
-    feda/FEDA_Vehicle.h   
+    feda/FEDA_Vehicle.h
     feda/FEDA_Wheel.cpp
     feda/FEDA_Wheel.h   
     feda/FEDA.cpp
@@ -536,6 +540,8 @@ set(CVM_MAN_VEHICLE_FILES
     man/MAN_5t_SimpleDriveline.h
     man/MAN_5t_SimpleDrivelineXWD.cpp
     man/MAN_5t_SimpleDrivelineXWD.h
+    man/MAN_5t_RigidTire.cpp
+    man/MAN_5t_RigidTire.h
     man/MAN_5t_TMeasyTire.cpp
     man/MAN_5t_TMeasyTire.h
     man/MAN_5t_TMsimpleTire.cpp

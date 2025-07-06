@@ -27,9 +27,11 @@
 #include "chrono_models/vehicle/feda/FEDA_BrakeShafts.h"
 #include "chrono_models/vehicle/feda/FEDA_Chassis.h"
 #include "chrono_models/vehicle/feda/FEDA_DoubleWishbone.h"
+#include "chrono_models/vehicle/feda/FEDA_DoubleWishboneReduced.h"
 #include "chrono_models/vehicle/feda/FEDA_AntirollBarRSD.h"
 #include "chrono_models/vehicle/feda/FEDA_Driveline4WD.h"
 #include "chrono_models/vehicle/feda/FEDA_PitmanArm.h"
+#include "chrono_models/vehicle/feda/FEDA_RackPinion.h"
 #include "chrono_models/vehicle/feda/FEDA_Wheel.h"
 
 namespace chrono {
@@ -70,10 +72,17 @@ void FEDA_Vehicle::Create(bool fixed, BrakeType brake_type, CollisionType chassi
     m_axles[0] = chrono_types::make_shared<ChAxle>();
     m_axles[1] = chrono_types::make_shared<ChAxle>();
 
+    // Full version suspension
     m_axles[0]->m_suspension =
         chrono_types::make_shared<FEDA_DoubleWishboneFront>("FrontSusp", m_ride_height, m_damper_mode);
     m_axles[1]->m_suspension =
         chrono_types::make_shared<FEDA_DoubleWishboneRear>("RearSusp", m_ride_height, m_damper_mode);
+
+    // // Reduced version suspension
+    // m_axles[0]->m_suspension =
+    //     chrono_types::make_shared<FEDA_DoubleWishboneReducedFront>("FrontSusp", m_ride_height, m_damper_mode);
+    // m_axles[1]->m_suspension =
+    //     chrono_types::make_shared<FEDA_DoubleWishboneReducedRear>("RearSusp", m_ride_height, m_damper_mode);
 
     m_axles[0]->m_wheels.resize(2);
     m_axles[0]->m_wheels[0] = chrono_types::make_shared<FEDA_Wheel>("Wheel_FL");
@@ -102,7 +111,10 @@ void FEDA_Vehicle::Create(bool fixed, BrakeType brake_type, CollisionType chassi
 
     // Create the steering subsystem
     m_steerings.resize(1);
-    m_steerings[0] = chrono_types::make_shared<FEDA_PitmanArm>("Steering");
+    // //PitmanArm steering
+    // m_steerings[0] = chrono_types::make_shared<FEDA_PitmanArm>("Steering");
+    //RackPinion steering - same as HMMWV
+    m_steerings[0] = chrono_types::make_shared<FEDA_RackPinion>("Steering");
 
     // Create the driveline
     m_driveline = chrono_types::make_shared<FEDA_Driveline4WD>("Driveline");

@@ -49,13 +49,16 @@ def main():
     hmmwv.Initialize()
 
     hmmwv.SetChassisVisualizationType(chassis_vis_type)
-    hmmwv.SetSuspensionVisualizationType(suspension_vis_type)
     hmmwv.SetSteeringVisualizationType(steering_vis_type)
     hmmwv.SetWheelVisualizationType(wheel_vis_type)
     hmmwv.SetTireVisualizationType(tire_vis_type)
 
     hmmwv.GetSystem().SetCollisionSystemType(chrono.ChCollisionSystem.Type_BULLET)
-
+    
+    transmission =  hmmwv.GetVehicle().GetTransmission() 
+    transmission.SetGear(-1)   
+    print("Current Gear: ", transmission.GetCurrentGear())
+    
     # Create the terrain
 
     terrain = veh.RigidTerrain(hmmwv.GetSystem())

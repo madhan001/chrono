@@ -36,6 +36,8 @@ def main():
 
     m113 = veh.M113()
     m113.SetContactMethod(chrono.ChContactMethod_SMC)
+    m113.SetChassisCollisionType(chassis_collision_type)
+    m113.SetChassisFixed(False) 
     m113.SetTrackShoeType(veh.TrackShoeType_SINGLE_PIN)
     m113.SetDrivelineType(veh.DrivelineTypeTV_BDS)
     m113.SetEngineType(veh.EngineModelType_SHAFTS)
@@ -159,7 +161,7 @@ initLoc = chrono.ChVector3d(0, 0, 1.1)
 initRot = chrono.ChQuaterniond(1, 0, 0, 0)
 
 # Collision type for chassis (PRIMITIVES, MESH, or NONE)
-chassis_collision_type = veh.CollisionType_NONE
+chassis_collision_type = veh.CollisionType_PRIMITIVES
 
 # Rigid terrain
 terrainHeight = 0;      # terrain height (FLAT terrain only)
@@ -173,7 +175,7 @@ trackPoint = chrono.ChVector3d(0.0, 0.0, 0.0)
 contact_method = chrono.ChContactMethod_SMC
 
 # Simulation step sizes
-step_size = 5e-4;
+step_size = 8e-4;
 
 # Time interval between two render frames
 render_step_size = 1.0 / 60;  # FPS = 60

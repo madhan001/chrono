@@ -107,7 +107,7 @@ def main():
 
         # Get driver inputs
         driver_inputs = driver.GetInputs()
-
+        
         # Update modules (process inputs from other modules)
         driver.Synchronize(time)
         terrain.Synchronize(time)
@@ -142,10 +142,10 @@ wheel_vis_type = veh.VisualizationType_MESH
 tire_vis_type = veh.VisualizationType_MESH 
 
 # Collision type for chassis (PRIMITIVES, MESH, or NONE)
-chassis_collision_type = veh.CollisionType_NONE
+chassis_collision_type = veh.CollisionType_PRIMITIVES
 
 # Type of tire model (RIGID, PAC02)
-tire_model = veh.TireModelType_PAC02
+tire_model = veh.TireModelType_RIGID
 
 # Rigid terrain
 terrainHeight = 0;      # terrain height (FLAT terrain only)
@@ -156,10 +156,10 @@ terrainWidth = 100.0;   # size in Y direction
 trackPoint = chrono.ChVector3d(0.0, 0.0, 1.75)
 
 # Contact method
-contact_method = chrono.ChContactMethod_SMC
+contact_method = chrono.ChContactMethod_NSC
 
 # Simulation step sizes
-step_size = 1e-3;
-tire_step_size = 1e-3;
+step_size = 2e-3;
+tire_step_size = 2e-3;
 
 main()

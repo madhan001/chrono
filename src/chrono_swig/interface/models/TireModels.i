@@ -23,6 +23,7 @@
 #include "chrono_models/vehicle/citybus/CityBus_RigidTire.h"
 #include "chrono_models/vehicle/citybus/CityBus_TMeasyTire.h"
 
+#include "chrono_models/vehicle/man/MAN_5t_RigidTire.h"
 #include "chrono_models/vehicle/man/MAN_5t_TMeasyTire.h"
 
 #include "chrono_models/vehicle/uaz/UAZBUS_TMeasyTire.h"
@@ -53,6 +54,7 @@
 %shared_ptr(chrono::vehicle::sedan::Sedan_RigidTire)
 %shared_ptr(chrono::vehicle::citybus::CityBus_RigidTire)
 %shared_ptr(chrono::vehicle::citybus::CityBus_TMeasyTire)
+%shared_ptr(chrono::vehicle::man::MAN_5t_RigidTire)
 %shared_ptr(chrono::vehicle::man::MAN_5t_TMeasyTire)
 %shared_ptr(chrono::vehicle::uaz::UAZBUS_TMeasyTireFront)
 %shared_ptr(chrono::vehicle::uaz::UAZBUS_TMeasyTireRear)
@@ -84,6 +86,7 @@
 %include "../../../chrono_models/vehicle/citybus/CityBus_RigidTire.h"
 %include "../../../chrono_models/vehicle/citybus/CityBus_TMeasyTire.h"
 
+%include "../../../chrono_models/vehicle/man/MAN_5t_RigidTire.h"
 %include "../../../chrono_models/vehicle/man/MAN_5t_TMeasyTire.h"
 
 %include "../../../chrono_models/vehicle/uaz/UAZBUS_TMeasyTire.h"

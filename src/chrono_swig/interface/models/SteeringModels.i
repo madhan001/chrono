@@ -34,6 +34,7 @@
 #include "chrono_models/vehicle/artcar/ARTcar_PitmanArm.h"
 
 #include "chrono_models/vehicle/feda/FEDA_PitmanArm.h"
+#include "chrono_models/vehicle/feda/FEDA_RackPinion.h"
 
 #include "chrono_models/vehicle/vertiwheeler/Vertiwheeler_RotaryArm.h"
 %}
@@ -54,6 +55,7 @@
 %shared_ptr(chrono::vehicle::gator::Gator_RackPinion)
 
 %shared_ptr(chrono::vehicle::feda::FEDA_PitmanArm)
+%shared_ptr(chrono::vehicle::feda::FEDA_RackPinion)
 
 %shared_ptr(chrono::vehicle::vertiwheeler::Vertiwheeler_RotaryArm)
 
@@ -78,5 +80,6 @@
 %include "../../../chrono_models/vehicle/artcar/ARTcar_PitmanArm.h"
 
 %include "../../../chrono_models/vehicle/feda/FEDA_PitmanArm.h"
+%include "../../../chrono_models/vehicle/feda/FEDA_RackPinion.h"
 
 %include "../../../chrono_models/vehicle/vertiwheeler/Vertiwheeler_RotaryArm.h"

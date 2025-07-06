@@ -17,7 +17,7 @@ const double Vertiwheeler_RotaryArm::m_pitmanArmRadius = 0.002;
 
 const double Vertiwheeler_RotaryArm::m_maxAngle = 45.0 * (CH_PI / 180);
 
-const ChVector3d Vertiwheeler_RotaryArm::m_pitmanArmInertiaMoments(0.00638, 0.00756, 0.00150);
+const ChVector3d Vertiwheeler_RotaryArm::m_pitmanArmInertiaMoments(0.02000, 0.02500, 0.00600);
 const ChVector3d Vertiwheeler_RotaryArm::m_pitmanArmInertiaProducts(0.0, 0.0, 0.0);
 
 // -----------------------------------------------------------------------------

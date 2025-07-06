@@ -169,6 +169,29 @@ void MAN_7t::Initialize() {
             break;
         }
 */
+        case TireModelType::RIGID_MESH:
+        case TireModelType::RIGID: {
+            bool use_mesh = (m_tireType == TireModelType::RIGID_MESH);
+
+            auto tire_FL = chrono_types::make_shared<MAN_5t_RigidTire>("FL", use_mesh);
+            auto tire_FR = chrono_types::make_shared<MAN_5t_RigidTire>("FR", use_mesh);
+            auto tire_RL1 = chrono_types::make_shared<MAN_5t_RigidTire>("RL1", use_mesh);
+            auto tire_RR1 = chrono_types::make_shared<MAN_5t_RigidTire>("RR1", use_mesh);
+            auto tire_RL2 = chrono_types::make_shared<MAN_5t_RigidTire>("RL2", use_mesh);
+            auto tire_RR2 = chrono_types::make_shared<MAN_5t_RigidTire>("RR2", use_mesh);
+
+            m_vehicle->InitializeTire(tire_FL, m_vehicle->GetAxle(0)->m_wheels[LEFT], VisualizationType::NONE);
+            m_vehicle->InitializeTire(tire_FR, m_vehicle->GetAxle(0)->m_wheels[RIGHT], VisualizationType::NONE);
+            m_vehicle->InitializeTire(tire_RL1, m_vehicle->GetAxle(1)->m_wheels[LEFT], VisualizationType::NONE);
+            m_vehicle->InitializeTire(tire_RR1, m_vehicle->GetAxle(1)->m_wheels[RIGHT], VisualizationType::NONE);
+            m_vehicle->InitializeTire(tire_RL2, m_vehicle->GetAxle(2)->m_wheels[LEFT], VisualizationType::NONE);
+            m_vehicle->InitializeTire(tire_RR2, m_vehicle->GetAxle(2)->m_wheels[RIGHT], VisualizationType::NONE);
+
+            m_tire_mass = tire_FL->GetMass();
+
+            break;
+        }
+        
         case TireModelType::TMEASY: {
             auto tire_FL = chrono_types::make_shared<MAN_5t_TMeasyTire>("FL");
             auto tire_FR = chrono_types::make_shared<MAN_5t_TMeasyTire>("FR");

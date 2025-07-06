@@ -32,18 +32,18 @@ namespace artcar {
 static const double in2m = 0.0254;
 static const double lb2kg = 0.453592;
 
-const double ARTcar_PitmanArm::m_steeringLinkMass = 0.01101740;
-const double ARTcar_PitmanArm::m_pitmanArmMass = 0.00524114;
+const double ARTcar_PitmanArm::m_steeringLinkMass = 0.05;
+const double ARTcar_PitmanArm::m_pitmanArmMass = 0.03;
 
 const double ARTcar_PitmanArm::m_steeringLinkRadius = 0.005;
 const double ARTcar_PitmanArm::m_pitmanArmRadius = 0.005;
 
 const double ARTcar_PitmanArm::m_maxAngle = 0.512;
 
-const ChVector3d ARTcar_PitmanArm::m_steeringLinkInertiaMoments(0.00000560, 0.00000021, 0.00000569);
+const ChVector3d ARTcar_PitmanArm::m_steeringLinkInertiaMoments(0.00002800, 0.00001050, 0.00002845);
 const ChVector3d ARTcar_PitmanArm::m_steeringLinkInertiaProducts(0.0, 0.00000002, 0.0);
 
-const ChVector3d ARTcar_PitmanArm::m_pitmanArmInertiaMoments(0.00000041, 0.00000045, 0.00000032);
+const ChVector3d ARTcar_PitmanArm::m_pitmanArmInertiaMoments(0.00002050, 0.00002250, 0.00001600);
 const ChVector3d ARTcar_PitmanArm::m_pitmanArmInertiaProducts(0.0, 0.0, 0.0);
 
 // -----------------------------------------------------------------------------

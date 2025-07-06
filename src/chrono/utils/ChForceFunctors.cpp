@@ -1,7 +1,7 @@
 // =============================================================================
 // PROJECT CHRONO - http://projectchrono.org
 //
-// Copyright (c) 2020 projectchrono.org
+// Copyright (c) 2025 projectchrono.org
 // All rights reserved.
 //
 // Use of this source code is governed by a BSD-style license that can be found
@@ -12,17 +12,20 @@
 // Authors: Radu Serban
 // =============================================================================
 //
-// Various utility classes for vehicle subsystems.
+// Various pre-defined TSDA and RSDA force/torque functors.
 //
 // =============================================================================
 
 #include <limits>
 #include <iterator>
 
-#include "chrono_vehicle/ChSubsysDefs.h"
+#include "chrono/utils/ChForceFunctors.h"
+
+#include "chrono_thirdparty/rapidjson/filereadstream.h"
+#include "chrono_thirdparty/rapidjson/istreamwrapper.h"
 
 namespace chrono {
-namespace vehicle {
+namespace utils {
 
 // -----------------------------------------------------------------------------
 
@@ -673,5 +676,5 @@ rapidjson::Value NonlinearSpringDamperTorque::exportJSON(rapidjson::Document::Al
     return obj;
 }
 
-}  // end namespace vehicle
+}  // end namespace utils
 }  // end namespace chrono

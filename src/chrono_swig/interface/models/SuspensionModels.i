@@ -40,6 +40,7 @@
 #include "chrono_models/vehicle/artcar/ARTcar_DoubleWishbone.h"
 
 #include "chrono_models/vehicle/feda/FEDA_DoubleWishbone.h"
+#include "chrono_models/vehicle/feda/FEDA_DoubleWishboneReduced.h"
 
 #include "chrono_models/vehicle/vertiwheeler/Vertiwheeler_BellcrankSolid3LinkAxle.h"
 #include "chrono_models/vehicle/vertiwheeler/Vertiwheeler_Solid3LinkAxle.h"
@@ -78,6 +79,9 @@
 %shared_ptr(chrono::vehicle::feda::FEDA_DoubleWishbone)
 %shared_ptr(chrono::vehicle::feda::FEDA_DoubleWishboneRear)
 %shared_ptr(chrono::vehicle::feda::FEDA_DoubleWishboneFront)
+%shared_ptr(chrono::vehicle::feda::FEDA_DoubleWishboneReduced)
+%shared_ptr(chrono::vehicle::feda::FEDA_DoubleWishboneReducedRear)
+%shared_ptr(chrono::vehicle::feda::FEDA_DoubleWishboneReducedFront)
 
 %shared_ptr(chrono::vehicle::vertiwheeler::Vertiwheeler_BellcrankSolid3LinkAxle)
 %shared_ptr(chrono::vehicle::vertiwheeler::Vertiwheeler_Solid3LinkAxle)
@@ -110,6 +114,7 @@
 %include "../../../chrono_models/vehicle/artcar/ARTcar_DoubleWishbone.h"
 
 %include "../../../chrono_models/vehicle/feda/FEDA_DoubleWishbone.h"
+%include "../../../chrono_models/vehicle/feda/FEDA_DoubleWishboneReduced.h" 
 
 %include "../../../chrono_models/vehicle/vertiwheeler/Vertiwheeler_BellcrankSolid3LinkAxle.h"
 %include "../../../chrono_models/vehicle/vertiwheeler/Vertiwheeler_Solid3LinkAxle.h"
